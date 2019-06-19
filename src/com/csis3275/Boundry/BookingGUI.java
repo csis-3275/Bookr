@@ -128,5 +128,6 @@ public class BookingGUI {
 		
 		JPanel panelSchedule = new JPanel();
 		frame.getContentPane().add(panelSchedule, "name_299475262638900");
+		panelSchedule.setLayout(null);
 	}
 }
