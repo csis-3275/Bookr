@@ -1,5 +1,5 @@
 package com.csis3275.Entities;
 
-public class Transaction {
+public class BookingTransaction {
 
 }
