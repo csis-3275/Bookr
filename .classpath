@@ -93,5 +93,6 @@
 	<classpathentry kind="lib" path="lib/sisu-inject-plexus-1.4.2.jar"/>
 	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/LGoodDatePicker-10.4.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
