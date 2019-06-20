@@ -24,22 +24,22 @@ import com.github.lgooddatepicker.components.DatePicker;
 public class BookingGUI {
 
 	private JFrame frame;
-	private JTextField textPassword;
-	private JTextField textId;
-	private JTextField textFName;
-	private JTextField textLName;
-	private JTextField textEmail;
-	private JTextField textPhoneNumber;
-	private JTextField textBookingNumber;
-	private JTextField textNumGuests;
-	private JTextField textRNumGuests;
+	private JTextField txtPassword;
+	private JTextField txtId;
+	private JTextField txtFName;
+	private JTextField txtLName;
+	private JTextField txtEmail;
+	private JTextField txtPhoneNumber;
+	private JTextField txtBookingNumber;
+	private JTextField txtNumGuests;
+	private JTextField txtRNumGuests;
 	private JTable tblReschedule;
-	private JTextField textOldDate;
-	private JTextField textOldTime;
-	private JTextField textOldNumGuests;
-	private JTextField textNewDate;
-	private JTextField textNewTime;
-	private JTextField textNewNumGuests;
+	private JTextField txtOldDate;
+	private JTextField txtOldTime;
+	private JTextField txtOldNumGuests;
+	private JTextField txtNewDate;
+	private JTextField txtNewTime;
+	private JTextField txtNewNumGuests;
 	
 	private JPanel panelLogin;
 	private JPanel panelRegister;
@@ -47,10 +47,11 @@ public class BookingGUI {
 	private JPanel Reschedule;
 	private JPanel panelSupport;
 	private JPanel panelProfile;
-	private JTextField txtBobSmith;
-	private JTextField txtBobgmailcom;
-	private JTable table_1;
-	private JTextField textRescheduleMessage;
+	private JTextField txtUserName;
+	private JTextField txtUserEmail;
+	private JTable tblReservations;
+	private JTextField txtRescheduleMessage;
+	private JTextField txtUserPhoneNumber;
 
 	/**
 	 * Launch the application.
@@ -122,33 +123,33 @@ public class BookingGUI {
 		lblName.setBounds(30, 66, 46, 14);
 		panelProfile.add(lblName);
 		
-		txtBobSmith = new JTextField();
-		txtBobSmith.setText("Bob Smith");
-		txtBobSmith.setBounds(132, 63, 108, 20);
-		panelProfile.add(txtBobSmith);
-		txtBobSmith.setColumns(10);
+		txtUserName = new JTextField();
+		txtUserName.setText("Bob Smith");
+		txtUserName.setBounds(132, 63, 135, 20);
+		panelProfile.add(txtUserName);
+		txtUserName.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Email: ");
 		lblNewLabel_2.setBounds(30, 91, 46, 14);
 		panelProfile.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Phone Number: ");
-		lblNewLabel_3.setBounds(30, 116, 77, 14);
+		lblNewLabel_3.setBounds(30, 128, 95, 14);
 		panelProfile.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Reservations");
-		lblNewLabel_4.setBounds(30, 141, 77, 14);
+		lblNewLabel_4.setBounds(30, 161, 95, 14);
 		panelProfile.add(lblNewLabel_4);
 		
-		txtBobgmailcom = new JTextField();
-		txtBobgmailcom.setText("bob@gmail.com");
-		txtBobgmailcom.setBounds(132, 94, 108, 20);
-		panelProfile.add(txtBobgmailcom);
-		txtBobgmailcom.setColumns(10);
+		txtUserEmail = new JTextField();
+		txtUserEmail.setText("bob@gmail.com");
+		txtUserEmail.setBounds(132, 94, 135, 20);
+		panelProfile.add(txtUserEmail);
+		txtUserEmail.setColumns(10);
 		
-		table_1 = new JTable();
-		table_1.setBounds(132, 141, 108, 65);
-		panelProfile.add(table_1);
+		tblReservations = new JTable();
+		tblReservations.setBounds(132, 161, 135, 65);
+		panelProfile.add(tblReservations);
 		
 		JButton btnSchedule = new JButton("Schedule");
 		btnSchedule.addActionListener(new ActionListener() {
@@ -160,25 +161,31 @@ public class BookingGUI {
 		btnSchedule.setBounds(277, 62, 108, 23);
 		panelProfile.add(btnSchedule);
 		
-		JButton btnNewButton_1 = new JButton("Reschedule");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnReschedule = new JButton("Reschedule");
+		btnReschedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelReschedule.setVisible(true);
 				panelProfile.setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(277, 91, 108, 23);
-		panelProfile.add(btnNewButton_1);
+		btnReschedule.setBounds(277, 91, 108, 23);
+		panelProfile.add(btnReschedule);
 		
-		JButton btnNewButton_2 = new JButton("Sign Out");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton btnSignOut = new JButton("Sign Out");
+		btnSignOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelLogin.setVisible(true);
 				panelProfile.setVisible(false);
 			}
 		});
-		btnNewButton_2.setBounds(277, 132, 108, 23);
-		panelProfile.add(btnNewButton_2);
+		btnSignOut.setBounds(277, 132, 108, 23);
+		panelProfile.add(btnSignOut);
+		
+		txtUserPhoneNumber = new JTextField();
+		txtUserPhoneNumber.setText("604-999-9932");
+		txtUserPhoneNumber.setBounds(132, 125, 135, 20);
+		panelProfile.add(txtUserPhoneNumber);
+		txtUserPhoneNumber.setColumns(10);
 		panelProfile.setVisible(false);
 		
 		JLabel lblUserId = new JLabel("User ID");
@@ -189,17 +196,17 @@ public class BookingGUI {
 		lblPassword.setBounds(37, 107, 89, 14);
 		panelLogin.add(lblPassword);
 		
-		textPassword = new JTextField();
-		textPassword.setText("********");
-		textPassword.setBounds(37, 132, 188, 20);
-		panelLogin.add(textPassword);
-		textPassword.setColumns(10);
+		txtPassword = new JTextField();
+		txtPassword.setText("********");
+		txtPassword.setBounds(37, 132, 188, 20);
+		panelLogin.add(txtPassword);
+		txtPassword.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String userId = textId.getText();
-				String userPass = textPassword.getText();
+				String userId = txtId.getText();
+				String userPass = txtPassword.getText();
 				
 				
 				if (userId == "admin") {
@@ -218,11 +225,11 @@ public class BookingGUI {
 		btnRegister.setBounds(136, 163, 89, 23);
 		panelLogin.add(btnRegister);
 		
-		textId = new JTextField();
-		textId.setText("Bob Smith");
-		textId.setBounds(37, 76, 188, 20);
-		panelLogin.add(textId);
-		textId.setColumns(10);
+		txtId = new JTextField();
+		txtId.setText("Bob Smith");
+		txtId.setBounds(37, 76, 188, 20);
+		panelLogin.add(txtId);
+		txtId.setColumns(10);
 		
 		JLabel lblLoginPage = new JLabel("Login Page");
 		lblLoginPage.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -235,37 +242,37 @@ public class BookingGUI {
 		lblFirstName.setBounds(30, 60, 79, 14);
 		panelRegister.add(lblFirstName);
 		
-		textFName = new JTextField();
-		textFName.setBounds(30, 85, 126, 20);
-		panelRegister.add(textFName);
-		textFName.setColumns(10);
+		txtFName = new JTextField();
+		txtFName.setBounds(30, 85, 126, 20);
+		panelRegister.add(txtFName);
+		txtFName.setColumns(10);
 		
 		JLabel lblLastName = new JLabel("Last Name");
 		lblLastName.setBounds(189, 60, 79, 14);
 		panelRegister.add(lblLastName);
 		
-		textLName = new JTextField();
-		textLName.setBounds(189, 85, 126, 20);
-		panelRegister.add(textLName);
-		textLName.setColumns(10);
+		txtLName = new JTextField();
+		txtLName.setBounds(189, 85, 126, 20);
+		panelRegister.add(txtLName);
+		txtLName.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setBounds(30, 116, 63, 14);
 		panelRegister.add(lblEmail);
 		
-		textEmail = new JTextField();
-		textEmail.setBounds(30, 141, 126, 20);
-		panelRegister.add(textEmail);
-		textEmail.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(30, 141, 126, 20);
+		panelRegister.add(txtEmail);
+		txtEmail.setColumns(10);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number");
 		lblPhoneNumber.setBounds(189, 116, 79, 14);
 		panelRegister.add(lblPhoneNumber);
 		
-		textPhoneNumber = new JTextField();
-		textPhoneNumber.setBounds(189, 141, 126, 20);
-		panelRegister.add(textPhoneNumber);
-		textPhoneNumber.setColumns(10);
+		txtPhoneNumber = new JTextField();
+		txtPhoneNumber.setBounds(189, 141, 126, 20);
+		panelRegister.add(txtPhoneNumber);
+		txtPhoneNumber.setColumns(10);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(127, 172, 89, 23);
@@ -290,10 +297,10 @@ public class BookingGUI {
 		lblEnterNumberOf.setBounds(30, 157, 163, 14);
 		panelSchedule.add(lblEnterNumberOf);
 		
-		textNumGuests = new JTextField();
-		textNumGuests.setBounds(30, 182, 86, 20);
-		panelSchedule.add(textNumGuests);
-		textNumGuests.setColumns(10);
+		txtNumGuests = new JTextField();
+		txtNumGuests.setBounds(30, 182, 86, 20);
+		panelSchedule.add(txtNumGuests);
+		txtNumGuests.setColumns(10);
 		
 		JButton btnConfirmBooking = new JButton("Confirm Booking");
 		btnConfirmBooking.setBounds(30, 213, 135, 23);
@@ -333,10 +340,10 @@ public class BookingGUI {
 		lblEnterBookingNumber.setBounds(30, 43, 127, 14);
 		panelReschedule.add(lblEnterBookingNumber);
 		
-		textBookingNumber = new JTextField();
-		textBookingNumber.setBounds(30, 68, 86, 20);
-		panelReschedule.add(textBookingNumber);
-		textBookingNumber.setColumns(10);
+		txtBookingNumber = new JTextField();
+		txtBookingNumber.setBounds(30, 68, 86, 20);
+		panelReschedule.add(txtBookingNumber);
+		txtBookingNumber.setColumns(10);
 		
 		JLabel lblSelectNewDate = new JLabel("Select New Date and Time");
 		lblSelectNewDate.setBounds(30, 99, 150, 14);
@@ -360,10 +367,10 @@ public class BookingGUI {
 		lblEnterNumberOf_1.setBounds(30, 158, 139, 14);
 		panelReschedule.add(lblEnterNumberOf_1);
 		
-		textRNumGuests = new JTextField();
-		textRNumGuests.setBounds(30, 183, 86, 20);
-		panelReschedule.add(textRNumGuests);
-		textRNumGuests.setColumns(10);
+		txtRNumGuests = new JTextField();
+		txtRNumGuests.setBounds(30, 183, 86, 20);
+		panelReschedule.add(txtRNumGuests);
+		txtRNumGuests.setColumns(10);
 		
 		JLabel lblReschedulePage = new JLabel("Reschedule Page");
 		lblReschedulePage.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -382,10 +389,10 @@ public class BookingGUI {
 		lblMessage_1.setBounds(194, 43, 46, 14);
 		panelReschedule.add(lblMessage_1);
 		
-		textRescheduleMessage = new JTextField();
-		textRescheduleMessage.setBounds(195, 68, 182, 45);
-		panelReschedule.add(textRescheduleMessage);
-		textRescheduleMessage.setColumns(10);
+		txtRescheduleMessage = new JTextField();
+		txtRescheduleMessage.setBounds(195, 68, 182, 45);
+		panelReschedule.add(txtRescheduleMessage);
+		txtRescheduleMessage.setColumns(10);
 		
 		
 		
@@ -406,72 +413,72 @@ public class BookingGUI {
 		lblNewLabel_1.setBounds(202, 47, 46, 14);
 		panelSupport.add(lblNewLabel_1);
 		
-		textOldDate = new JTextField();
-		textOldDate.setBounds(202, 69, 86, 20);
-		panelSupport.add(textOldDate);
-		textOldDate.setColumns(10);
+		txtOldDate = new JTextField();
+		txtOldDate.setBounds(202, 69, 86, 20);
+		panelSupport.add(txtOldDate);
+		txtOldDate.setColumns(10);
 		
 		JLabel lblTime = new JLabel("Time");
 		lblTime.setBounds(202, 100, 46, 14);
 		panelSupport.add(lblTime);
 		
-		textOldTime = new JTextField();
-		textOldTime.setBounds(202, 125, 86, 20);
-		panelSupport.add(textOldTime);
-		textOldTime.setColumns(10);
+		txtOldTime = new JTextField();
+		txtOldTime.setBounds(202, 125, 86, 20);
+		panelSupport.add(txtOldTime);
+		txtOldTime.setColumns(10);
 		
 		JLabel lblNumberOfGuests = new JLabel("Num of Guests");
 		lblNumberOfGuests.setBounds(202, 156, 86, 14);
 		panelSupport.add(lblNumberOfGuests);
 		
-		textOldNumGuests = new JTextField();
-		textOldNumGuests.setBounds(202, 181, 86, 20);
-		panelSupport.add(textOldNumGuests);
-		textOldNumGuests.setColumns(10);
+		txtOldNumGuests = new JTextField();
+		txtOldNumGuests.setBounds(202, 181, 86, 20);
+		panelSupport.add(txtOldNumGuests);
+		txtOldNumGuests.setColumns(10);
 		
 		JLabel lblMessage = new JLabel("Message");
 		lblMessage.setBounds(30, 147, 46, 14);
 		panelSupport.add(lblMessage);
 		
-		JTextArea textMessage = new JTextArea();
-		textMessage.setBounds(30, 179, 154, 84);
-		panelSupport.add(textMessage);
+		JTextArea txtMessage = new JTextArea();
+		txtMessage.setBounds(30, 179, 154, 84);
+		panelSupport.add(txtMessage);
 		
 		JLabel lblNewDate = new JLabel("New Date");
 		lblNewDate.setBounds(299, 47, 70, 14);
 		panelSupport.add(lblNewDate);
 		
-		textNewDate = new JTextField();
-		textNewDate.setBounds(298, 69, 86, 20);
-		panelSupport.add(textNewDate);
-		textNewDate.setColumns(10);
+		txtNewDate = new JTextField();
+		txtNewDate.setBounds(298, 69, 86, 20);
+		panelSupport.add(txtNewDate);
+		txtNewDate.setColumns(10);
 		
 		JLabel lblNewTime = new JLabel("New Time");
 		lblNewTime.setBounds(299, 100, 61, 14);
 		panelSupport.add(lblNewTime);
 		
-		textNewTime = new JTextField();
-		textNewTime.setBounds(298, 125, 86, 20);
-		panelSupport.add(textNewTime);
-		textNewTime.setColumns(10);
+		txtNewTime = new JTextField();
+		txtNewTime.setBounds(298, 125, 86, 20);
+		panelSupport.add(txtNewTime);
+		txtNewTime.setColumns(10);
 		
 		JLabel lblNewNumOf = new JLabel("New Num of Guests");
 		lblNewNumOf.setBounds(298, 156, 102, 14);
 		panelSupport.add(lblNewNumOf);
 		
-		textNewNumGuests = new JTextField();
-		textNewNumGuests.setBounds(298, 181, 86, 20);
-		panelSupport.add(textNewNumGuests);
-		textNewNumGuests.setColumns(10);
+		txtNewNumGuests = new JTextField();
+		txtNewNumGuests.setBounds(298, 181, 86, 20);
+		panelSupport.add(txtNewNumGuests);
+		txtNewNumGuests.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Approve");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnApprove = new JButton("Approve");
+		btnApprove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Approved");
 			}
 		});
-		btnNewButton.setBounds(199, 212, 89, 23);
-		panelSupport.add(btnNewButton);
+		btnApprove.setBounds(199, 212, 89, 23);
+		panelSupport.add(btnApprove);
 		
 		JButton btnDeny = new JButton("Deny");
 		btnDeny.setBounds(299, 212, 89, 23);
