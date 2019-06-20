@@ -44,6 +44,9 @@ public class BookingGUI {
 	private JPanel Reschedule;
 	private JPanel panelSupport;
 	private JPanel panelProfile;
+	private JTextField txtBobSmith;
+	private JTextField txtBobgmailcom;
+	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -105,6 +108,73 @@ public class BookingGUI {
 		JPanel panelProfile = new JPanel();
 		frame.getContentPane().add(panelProfile, "name_391028971924000");
 		panelProfile.setLayout(null);
+		
+		JLabel lblProfilePage = new JLabel("Profile Page");
+		lblProfilePage.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblProfilePage.setBounds(30, 28, 108, 14);
+		panelProfile.add(lblProfilePage);
+		
+		JLabel lblName = new JLabel("Name: ");
+		lblName.setBounds(30, 66, 46, 14);
+		panelProfile.add(lblName);
+		
+		txtBobSmith = new JTextField();
+		txtBobSmith.setText("Bob Smith");
+		txtBobSmith.setBounds(132, 63, 108, 20);
+		panelProfile.add(txtBobSmith);
+		txtBobSmith.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Email: ");
+		lblNewLabel_2.setBounds(30, 91, 46, 14);
+		panelProfile.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Phone Number: ");
+		lblNewLabel_3.setBounds(30, 116, 77, 14);
+		panelProfile.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Reservations");
+		lblNewLabel_4.setBounds(30, 141, 77, 14);
+		panelProfile.add(lblNewLabel_4);
+		
+		txtBobgmailcom = new JTextField();
+		txtBobgmailcom.setText("bob@gmail.com");
+		txtBobgmailcom.setBounds(132, 94, 108, 20);
+		panelProfile.add(txtBobgmailcom);
+		txtBobgmailcom.setColumns(10);
+		
+		table_1 = new JTable();
+		table_1.setBounds(132, 141, 108, 65);
+		panelProfile.add(table_1);
+		
+		JButton btnSchedule = new JButton("Schedule");
+		btnSchedule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panelSchedule.setVisible(true);
+				panelProfile.setVisible(false);
+			}
+		});
+		btnSchedule.setBounds(277, 62, 108, 23);
+		panelProfile.add(btnSchedule);
+		
+		JButton btnNewButton_1 = new JButton("Reschedule");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelReschedule.setVisible(true);
+				panelProfile.setVisible(false);
+			}
+		});
+		btnNewButton_1.setBounds(277, 91, 108, 23);
+		panelProfile.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Sign Out");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelLogin.setVisible(true);
+				panelProfile.setVisible(false);
+			}
+		});
+		btnNewButton_2.setBounds(277, 132, 108, 23);
+		panelProfile.add(btnNewButton_2);
 		panelProfile.setVisible(false);
 		
 		JLabel lblUserId = new JLabel("User ID");
@@ -221,6 +291,12 @@ public class BookingGUI {
 		panelSchedule.add(btnConfirmBooking);
 		
 		JButton btnCancel_1 = new JButton("Cancel");
+		btnCancel_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelProfile.setVisible(true);
+				panelSchedule.setVisible(false);
+			}
+		});
 		btnCancel_1.setBounds(154, 213, 89, 23);
 		panelSchedule.add(btnCancel_1);
 		
@@ -258,6 +334,12 @@ public class BookingGUI {
 		panelReschedule.add(btnConfirmRequest);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelProfile.setVisible(true);
+				panelReschedule.setVisible(false);
+			}
+		});
 		btnCancel.setBounds(153, 220, 89, 23);
 		panelReschedule.add(btnCancel);
 		
