@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.DefaultComboBoxModel;
 
 public class BookingGUI {
 
@@ -36,6 +37,13 @@ public class BookingGUI {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	
+	private JPanel panelLogin;
+	private JPanel panelRegister;
+	private JPanel panelSchedule;
+	private JPanel Reschedule;
+	private JPanel panelSupport;
+	private JPanel panelProfile;
 
 	/**
 	 * Launch the application.
@@ -72,6 +80,32 @@ public class BookingGUI {
 		JPanel panelLogin = new JPanel();
 		frame.getContentPane().add(panelLogin, "name_299459863946400");
 		panelLogin.setLayout(null);
+		panelLogin.setVisible(true);
+		
+		JPanel panelRegister = new JPanel();
+		frame.getContentPane().add(panelRegister, "name_299472625629900");
+		panelRegister.setLayout(null);
+		panelRegister.setVisible(false);
+		
+		JPanel panelSchedule = new JPanel();
+		frame.getContentPane().add(panelSchedule, "name_306961155065300");
+		panelSchedule.setLayout(null);
+		panelSchedule.setVisible(false);
+		
+		JPanel panelReschedule = new JPanel();
+		frame.getContentPane().add(panelReschedule, "name_299475262638900");
+		panelReschedule.setLayout(null);
+		panelReschedule.setVisible(false);
+		
+		JPanel panelSupport = new JPanel();
+		frame.getContentPane().add(panelSupport, "name_307857570675100");
+		panelSupport.setLayout(null);
+		panelSupport.setVisible(false);
+		
+		JPanel panelProfile = new JPanel();
+		frame.getContentPane().add(panelProfile, "name_391028971924000");
+		panelProfile.setLayout(null);
+		panelProfile.setVisible(false);
 		
 		JLabel lblUserId = new JLabel("User ID");
 		lblUserId.setBounds(37, 49, 46, 14);
@@ -82,6 +116,7 @@ public class BookingGUI {
 		panelLogin.add(lblPassword);
 		
 		textPassword = new JTextField();
+		textPassword.setText("********");
 		textPassword.setBounds(37, 132, 188, 20);
 		panelLogin.add(textPassword);
 		textPassword.setColumns(10);
@@ -89,6 +124,8 @@ public class BookingGUI {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				panelProfile.setVisible(true);
+				panelLogin.setVisible(false);
 			}
 		});
 		btnLogin.setBounds(37, 163, 89, 23);
@@ -99,6 +136,7 @@ public class BookingGUI {
 		panelLogin.add(btnRegister);
 		
 		textId = new JTextField();
+		textId.setText("Bob Smith");
 		textId.setBounds(37, 76, 188, 20);
 		panelLogin.add(textId);
 		textId.setColumns(10);
@@ -108,9 +146,7 @@ public class BookingGUI {
 		lblLoginPage.setBounds(37, 11, 89, 27);
 		panelLogin.add(lblLoginPage);
 		
-		JPanel panelRegister = new JPanel();
-		frame.getContentPane().add(panelRegister, "name_299472625629900");
-		panelRegister.setLayout(null);
+		
 		
 		JLabel lblFirstName = new JLabel("First Name");
 		lblFirstName.setBounds(30, 60, 79, 14);
@@ -157,9 +193,7 @@ public class BookingGUI {
 		lblRegistrationPage.setBounds(30, 11, 126, 30);
 		panelRegister.add(lblRegistrationPage);
 		
-		JPanel panelSchedule = new JPanel();
-		frame.getContentPane().add(panelSchedule, "name_306961155065300");
-		panelSchedule.setLayout(null);
+		
 		
 		JLabel lblSelectDateAnd = new JLabel("Select Date and Time");
 		lblSelectDateAnd.setBounds(30, 42, 114, 14);
@@ -196,12 +230,11 @@ public class BookingGUI {
 		panelSchedule.add(lblSchedulePage);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"101", "102", "103", "104", "105"}));
 		comboBox.setBounds(84, 126, 28, 20);
 		panelSchedule.add(comboBox);
 		
-		JPanel panelReschedule = new JPanel();
-		frame.getContentPane().add(panelReschedule, "name_299475262638900");
-		panelReschedule.setLayout(null);
+		
 		
 		JLabel lblEnterBookingNumber = new JLabel("Enter Booking Number");
 		lblEnterBookingNumber.setBounds(30, 43, 127, 14);
@@ -242,9 +275,7 @@ public class BookingGUI {
 		lblReschedulePage.setBounds(30, 11, 139, 21);
 		panelReschedule.add(lblReschedulePage);
 		
-		JPanel panelSupport = new JPanel();
-		frame.getContentPane().add(panelSupport, "name_307857570675100");
-		panelSupport.setLayout(null);
+		
 		
 		JLabel lblSupportPage = new JLabel("Support Page");
 		lblSupportPage.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -328,5 +359,7 @@ public class BookingGUI {
 		JButton btnDeny = new JButton("Deny");
 		btnDeny.setBounds(299, 212, 89, 23);
 		panelSupport.add(btnDeny);
+		
+		
 	}
 }
