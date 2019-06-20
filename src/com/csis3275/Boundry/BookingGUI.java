@@ -11,6 +11,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import com.github.lgooddatepicker.components.DateTimePicker;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class BookingGUI {
 
@@ -22,9 +27,15 @@ public class BookingGUI {
 	private JTextField textEmail;
 	private JTextField textPhoneNumber;
 	private JTextField textBookingNumber;
-	private JTextField textRoomNumber;
 	private JTextField textNumGuests;
 	private JTextField textField;
+	private JTable table;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
 
 	/**
 	 * Launch the application.
@@ -76,6 +87,10 @@ public class BookingGUI {
 		textPassword.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnLogin.setBounds(37, 163, 89, 23);
 		panelLogin.add(btnLogin);
 		
@@ -154,14 +169,9 @@ public class BookingGUI {
 		dateTimePicker_1.setBounds(30, 67, 221, 23);
 		panelSchedule.add(dateTimePicker_1);
 		
-		JLabel lblEnterRoomNumber = new JLabel("Enter Room Number");
+		JLabel lblEnterRoomNumber = new JLabel("Select Room Number");
 		lblEnterRoomNumber.setBounds(30, 101, 130, 14);
 		panelSchedule.add(lblEnterRoomNumber);
-		
-		textRoomNumber = new JTextField();
-		textRoomNumber.setBounds(30, 126, 86, 20);
-		panelSchedule.add(textRoomNumber);
-		textRoomNumber.setColumns(10);
 		
 		JLabel lblEnterNumberOf = new JLabel("Enter Number of Guests");
 		lblEnterNumberOf.setBounds(30, 157, 130, 14);
@@ -185,13 +195,9 @@ public class BookingGUI {
 		lblSchedulePage.setBounds(30, 11, 114, 20);
 		panelSchedule.add(lblSchedulePage);
 		
-		JLabel lblMessage = new JLabel("Message");
-		lblMessage.setBounds(170, 101, 46, 14);
-		panelSchedule.add(lblMessage);
-		
-		JTextArea textMessage = new JTextArea();
-		textMessage.setBounds(170, 124, 207, 78);
-		panelSchedule.add(textMessage);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(84, 126, 28, 20);
+		panelSchedule.add(comboBox);
 		
 		JPanel panelReschedule = new JPanel();
 		frame.getContentPane().add(panelReschedule, "name_299475262638900");
@@ -236,8 +242,91 @@ public class BookingGUI {
 		lblReschedulePage.setBounds(30, 11, 139, 21);
 		panelReschedule.add(lblReschedulePage);
 		
-		JPanel panel = new JPanel();
-		frame.getContentPane().add(panel, "name_307857570675100");
-		panel.setLayout(null);
+		JPanel panelSupport = new JPanel();
+		frame.getContentPane().add(panelSupport, "name_307857570675100");
+		panelSupport.setLayout(null);
+		
+		JLabel lblSupportPage = new JLabel("Support Page");
+		lblSupportPage.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblSupportPage.setBounds(30, 11, 113, 25);
+		panelSupport.add(lblSupportPage);
+		
+		JLabel lblNewLabel = new JLabel("Reschedule Requests");
+		lblNewLabel.setBounds(30, 47, 113, 14);
+		panelSupport.add(lblNewLabel);
+		
+		table = new JTable();
+		table.setBounds(30, 72, 154, 64);
+		panelSupport.add(table);
+		
+		JLabel lblNewLabel_1 = new JLabel("Date");
+		lblNewLabel_1.setBounds(202, 47, 46, 14);
+		panelSupport.add(lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(202, 69, 86, 20);
+		panelSupport.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblTime = new JLabel("Time");
+		lblTime.setBounds(202, 100, 46, 14);
+		panelSupport.add(lblTime);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(202, 125, 86, 20);
+		panelSupport.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNumberOfGuests = new JLabel("Num of Guests");
+		lblNumberOfGuests.setBounds(202, 156, 86, 14);
+		panelSupport.add(lblNumberOfGuests);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(202, 181, 86, 20);
+		panelSupport.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblMessage = new JLabel("Message");
+		lblMessage.setBounds(30, 147, 46, 14);
+		panelSupport.add(lblMessage);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(30, 179, 154, 84);
+		panelSupport.add(textArea);
+		
+		JLabel lblNewDate = new JLabel("New Date");
+		lblNewDate.setBounds(299, 47, 70, 14);
+		panelSupport.add(lblNewDate);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(298, 69, 86, 20);
+		panelSupport.add(textField_4);
+		textField_4.setColumns(10);
+		
+		JLabel lblNewTime = new JLabel("New Time");
+		lblNewTime.setBounds(299, 100, 61, 14);
+		panelSupport.add(lblNewTime);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(298, 125, 86, 20);
+		panelSupport.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JLabel lblNewNumOf = new JLabel("New Num of Guests");
+		lblNewNumOf.setBounds(298, 156, 102, 14);
+		panelSupport.add(lblNewNumOf);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(298, 181, 86, 20);
+		panelSupport.add(textField_6);
+		textField_6.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Approve");
+		btnNewButton.setBounds(199, 212, 89, 23);
+		panelSupport.add(btnNewButton);
+		
+		JButton btnDeny = new JButton("Deny");
+		btnDeny.setBounds(299, 212, 89, 23);
+		panelSupport.add(btnDeny);
 	}
 }
