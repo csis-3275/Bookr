@@ -66,12 +66,7 @@ public class BookingGUI {
 	private JTextField txtNewTime;
 	private JTextField txtNewNumGuests;
 	
-	private JPanel panelLogin;
-	private JPanel panelRegister;
-	private JPanel panelSchedule;
-	private JPanel Reschedule;
-	private JPanel panelSupport;
-	private JPanel panelProfile;
+
 	private JTextField txtUserName;
 	private JTextField txtUserEmail;
 	private JTable tblReservations;
@@ -263,6 +258,9 @@ public class BookingGUI {
 		
 		panelLogin.add(lblPassword);
 		
+		/**
+		 * Password field in sign in page
+		 */
 		txtPassword = new JTextField();
 		txtPassword.setText("********");
 		
@@ -293,11 +291,21 @@ public class BookingGUI {
 		btnLogin.setBounds(178, 269, 89, 23);
 		panelLogin.add(btnLogin);
 		
+		/**
+		 * Register button
+		 */
 		JButton btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnRegister.setBounds(296, 269, 89, 23);
 
 		panelLogin.add(btnRegister);
 		
+		/**
+		 * Name field in Login page
+		 */
 		txtId = new JTextField();
 		txtId.setText("Bob Smith");
 
@@ -384,24 +392,39 @@ public class BookingGUI {
 		lblEnterNumGuests.setBounds(204, 271, 163, 14);
 		panelSchedule.add(lblEnterNumGuests);
 		
+		/**
+		 * Number of guest field in Schedule page
+		 */
 		txtNumGuests = new JTextField();
 		txtNumGuests.setBounds(204, 296, 86, 20);
 		panelSchedule.add(txtNumGuests);
 		txtNumGuests.setColumns(10);
 
+		/**
+		 * Roombox selector in Schedule page
+		 */
 		JComboBox RoomBox = new JComboBox();
 		RoomBox.setModel(new DefaultComboBoxModel(new String[] {"", "100", "101", "102", "103", "104", "105"}));
 		RoomBox.setBounds(204, 229, 61, 20);
 		panelSchedule.add(RoomBox);
 
+		/**
+		 * Date picker in Schedule page
+		 */
 		DatePicker datePicker = new DatePicker();
 		datePicker.setBounds(204, 105, 139, 20);
 		panelSchedule.add(datePicker);
 		
+		/**
+		 * Time picker in Schedule page
+		 */
 		TimePicker timePicker = new TimePicker();
 		timePicker.setBounds(204, 161, 80, 23);
 		panelSchedule.add(timePicker);
 		
+		/**
+		 * Confirm booking button in Schedule page
+		 */
 		JButton btnConfirmBooking = new JButton("Confirm Booking");
 		btnConfirmBooking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -429,7 +452,9 @@ public class BookingGUI {
 		
 		
 
-		
+		/**
+		 * Cancel button in Schedule page, brings you back to Profile page
+		 */
 		JButton btnCancel_1 = new JButton("Cancel");
 		btnCancel_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -449,6 +474,9 @@ public class BookingGUI {
 		lblEnterBookingNumber.setBounds(158, 63, 127, 14);
 		panelReschedule.add(lblEnterBookingNumber);
 		
+		/**
+		 * Booking number field in Reschedule page
+		 */
 		txtBookingNumber = new JTextField();
 		txtBookingNumber.setBounds(158, 88, 86, 20);
 		panelReschedule.add(txtBookingNumber);
@@ -458,10 +486,16 @@ public class BookingGUI {
 		lblSelectNewDate.setBounds(158, 119, 106, 14);
 		panelReschedule.add(lblSelectNewDate);
 		
+		/**
+		 * Confirm request button in Reschedule page
+		 */
 		JButton btnConfirmRequest = new JButton("Confirm Request");
 		btnConfirmRequest.setBounds(201, 340, 150, 23);
 		panelReschedule.add(btnConfirmRequest);
 		
+		/**
+		 * Cancel button in Reschedule page, brings you back to Profile page
+		 */
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -476,6 +510,9 @@ public class BookingGUI {
 		lblEnterNumberGuests.setBounds(158, 175, 139, 14);
 		panelReschedule.add(lblEnterNumberGuests);
 		
+		/**
+		 * Number of guest field in Reschedule page
+		 */
 		txtRNumGuests = new JTextField();
 		txtRNumGuests.setBounds(158, 200, 86, 20);
 		panelReschedule.add(txtRNumGuests);
@@ -490,15 +527,24 @@ public class BookingGUI {
 		lblReasonReschedule.setBounds(158, 231, 165, 14);
 		panelReschedule.add(lblReasonReschedule);
 		
+		/**
+		 * Message field in Reschedule page
+		 */
 		txtRescheduleMessage = new JTextField();
 		txtRescheduleMessage.setBounds(158, 256, 250, 77);
 		panelReschedule.add(txtRescheduleMessage);
 		txtRescheduleMessage.setColumns(10);
 		
+		/**
+		 * Date picker in Reschedule page
+		 */
 		DatePicker datePicker_1 = new DatePicker();
 		datePicker_1.setBounds(158, 144, 139, 20);
 		panelReschedule.add(datePicker_1);
 		
+		/**
+		 * Time picker in Reschedule page
+		 */
 		TimePicker timePicker_1 = new TimePicker();
 		timePicker_1.setBounds(328, 142, 80, 23);
 		panelReschedule.add(timePicker_1);
@@ -532,6 +578,9 @@ public class BookingGUI {
 		lblSDate.setBounds(203, 81, 46, 14);
 		panelSupport.add(lblSDate);
 		
+		/**
+		 * Old date field in Support page
+		 */
 		txtOldDate = new JTextField();
 		txtOldDate.setBounds(203, 110, 86, 20);
 		panelSupport.add(txtOldDate);
@@ -541,6 +590,9 @@ public class BookingGUI {
 		lblSTime.setBounds(299, 81, 46, 14);
 		panelSupport.add(lblSTime);
 		
+		/**
+		 * Old time field in Support page
+		 */
 		txtOldTime = new JTextField();
 		txtOldTime.setBounds(299, 110, 86, 20);
 		panelSupport.add(txtOldTime);
@@ -550,6 +602,9 @@ public class BookingGUI {
 		lblNumGuests.setBounds(395, 81, 106, 14);
 		panelSupport.add(lblNumGuests);
 		
+		/**
+		 * Old number of guest field in Support page
+		 */
 		txtOldNumGuests = new JTextField();
 		txtOldNumGuests.setBounds(395, 110, 86, 20);
 		panelSupport.add(txtOldNumGuests);
@@ -564,6 +619,9 @@ public class BookingGUI {
 		lblNewDate.setBounds(203, 152, 63, 14);
 		panelSupport.add(lblNewDate);
 		
+		/**
+		 * New date field in Support page
+		 */
 		txtNewDate = new JTextField();
 		txtNewDate.setBounds(203, 177, 86, 20);
 		panelSupport.add(txtNewDate);
@@ -573,6 +631,9 @@ public class BookingGUI {
 		lblNewTime.setBounds(299, 152, 78, 14);
 		panelSupport.add(lblNewTime);
 		
+		/**
+		 * New time field in Support page
+		 */
 		txtNewTime = new JTextField();
 		txtNewTime.setBounds(299, 177, 86, 20);
 		panelSupport.add(txtNewTime);
@@ -582,6 +643,9 @@ public class BookingGUI {
 		lblNewNumGuests.setBounds(395, 152, 152, 14);
 		panelSupport.add(lblNewNumGuests);
 		
+		/**
+		 * New number of guest field in Support page
+		 */
 		txtNewNumGuests = new JTextField();
 		txtNewNumGuests.setBounds(395, 177, 86, 20);
 		panelSupport.add(txtNewNumGuests);
