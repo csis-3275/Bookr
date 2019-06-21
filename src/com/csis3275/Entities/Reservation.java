@@ -61,14 +61,14 @@ public class Reservation {
 	 * @return the _date
 	 */
 	public Date get_date() {
-		return _start_date;
+		return _date;
 	}
 
 	/**
 	 * @param _date the _date to set
 	 */
 	public void set_date(Date _date) {
-		this._date = __date;
+		this._date = _date;
 	}
 
 	/**
