@@ -21,8 +21,7 @@ public class Reservation {
 	@GeneratedValue
 	private int _id;
 	private int _room_id;
-	private Date _start_date;
-	private Date _end_date;
+	private Date _date;
 	private int _status;
 	private String _reservation_number;
 	
@@ -59,31 +58,17 @@ public class Reservation {
 	}
 
 	/**
-	 * @return the _start_date
+	 * @return the _date
 	 */
-	public Date get_start_date() {
+	public Date get_date() {
 		return _start_date;
 	}
 
 	/**
-	 * @param _start_date the _start_date to set
+	 * @param _date the _date to set
 	 */
-	public void set_start_date(Date _start_date) {
-		this._start_date = _start_date;
-	}
-
-	/**
-	 * @return the _end_date
-	 */
-	public Date get_end_date() {
-		return _end_date;
-	}
-
-	/**
-	 * @param _end_date the _end_date to set
-	 */
-	public void set_end_date(Date _end_date) {
-		this._end_date = _end_date;
+	public void set_date(Date _date) {
+		this._date = __date;
 	}
 
 	/**
