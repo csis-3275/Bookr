@@ -120,9 +120,9 @@ public class BookingGUI {
 		lblProfilePage.setBounds(235, 11, 108, 14);
 		panelProfile.add(lblProfilePage);
 		
-		JLabel lblName = new JLabel("Name: ");
-		lblName.setBounds(55, 112, 46, 14);
-		panelProfile.add(lblName);
+		JLabel lblPName = new JLabel("Name: ");
+		lblPName.setBounds(55, 112, 46, 14);
+		panelProfile.add(lblPName);
 		
 		txtUserName = new JTextField();
 		txtUserName.setText("Bob Smith");
@@ -130,16 +130,16 @@ public class BookingGUI {
 		panelProfile.add(txtUserName);
 		txtUserName.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Email: ");
-		lblNewLabel_2.setBounds(55, 155, 46, 14);
-		panelProfile.add(lblNewLabel_2);
+		JLabel lblPEmail = new JLabel("Email: ");
+		lblPEmail.setBounds(55, 155, 46, 14);
+		panelProfile.add(lblPEmail);
 		
-		JLabel lblNewLabel_3 = new JLabel("Phone Number: ");
-		lblNewLabel_3.setBounds(55, 199, 95, 14);
-		panelProfile.add(lblNewLabel_3);
+		JLabel lblPPhoneNum = new JLabel("Phone Number: ");
+		lblPPhoneNum.setBounds(55, 199, 95, 14);
+		panelProfile.add(lblPPhoneNum);
 		
 		JLabel lblResNum = new JLabel("Reservation Numbers");
-		lblResNum.setBounds(55, 234, 135, 14);
+		lblResNum.setBounds(55, 234, 115, 14);
 		panelProfile.add(lblResNum);
 		
 		txtUserEmail = new JTextField();
@@ -294,9 +294,9 @@ public class BookingGUI {
 		lblEnterRoomNumber.setBounds(204, 204, 130, 14);
 		panelSchedule.add(lblEnterRoomNumber);
 		
-		JLabel lblEnterNumberOf = new JLabel("Enter Number of Guests");
-		lblEnterNumberOf.setBounds(204, 271, 163, 14);
-		panelSchedule.add(lblEnterNumberOf);
+		JLabel lblEnterNumGuests = new JLabel("Enter Number of Guests");
+		lblEnterNumGuests.setBounds(204, 271, 163, 14);
+		panelSchedule.add(lblEnterNumGuests);
 		
 		txtNumGuests = new JTextField();
 		txtNumGuests.setBounds(204, 296, 86, 20);
@@ -322,10 +322,10 @@ public class BookingGUI {
 		lblSchedulePage.setBounds(233, 11, 114, 20);
 		panelSchedule.add(lblSchedulePage);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "101", "102", "103", "104", "105"}));
-		comboBox.setBounds(204, 229, 61, 20);
-		panelSchedule.add(comboBox);
+		JComboBox RoomBox = new JComboBox();
+		RoomBox.setModel(new DefaultComboBoxModel(new String[] {"", "101", "102", "103", "104", "105"}));
+		RoomBox.setBounds(204, 229, 61, 20);
+		panelSchedule.add(RoomBox);
 		
 		TimePicker timePicker = new TimePicker();
 		timePicker.setBounds(204, 161, 80, 23);
@@ -368,9 +368,9 @@ public class BookingGUI {
 		btnCancel.setBounds(234, 374, 89, 23);
 		panelReschedule.add(btnCancel);
 		
-		JLabel lblEnterNumberOf_1 = new JLabel("Enter Number of Guests");
-		lblEnterNumberOf_1.setBounds(158, 175, 139, 14);
-		panelReschedule.add(lblEnterNumberOf_1);
+		JLabel lblEnterNumberGuests = new JLabel("Enter Number of Guests");
+		lblEnterNumberGuests.setBounds(158, 175, 139, 14);
+		panelReschedule.add(lblEnterNumberGuests);
 		
 		txtRNumGuests = new JTextField();
 		txtRNumGuests.setBounds(158, 200, 86, 20);
@@ -382,9 +382,9 @@ public class BookingGUI {
 		lblReschedulePage.setBounds(224, 11, 139, 21);
 		panelReschedule.add(lblReschedulePage);
 		
-		JLabel lblMessage_1 = new JLabel("Reason for Reschedule");
-		lblMessage_1.setBounds(158, 231, 165, 14);
-		panelReschedule.add(lblMessage_1);
+		JLabel lblReasonReschedule = new JLabel("Reason for Reschedule");
+		lblReasonReschedule.setBounds(158, 231, 165, 14);
+		panelReschedule.add(lblReasonReschedule);
 		
 		txtRescheduleMessage = new JTextField();
 		txtRescheduleMessage.setBounds(158, 256, 250, 77);
@@ -418,18 +418,18 @@ public class BookingGUI {
 		tblReschedule.setBounds(204, 102, 154, 64);
 		panelSupport.add(tblReschedule);
 		
-		JLabel lblNewLabel_1 = new JLabel("Date");
-		lblNewLabel_1.setBounds(10, 177, 46, 14);
-		panelSupport.add(lblNewLabel_1);
+		JLabel lblSDate = new JLabel("Date");
+		lblSDate.setBounds(10, 177, 46, 14);
+		panelSupport.add(lblSDate);
 		
 		txtOldDate = new JTextField();
 		txtOldDate.setBounds(81, 174, 86, 20);
 		panelSupport.add(txtOldDate);
 		txtOldDate.setColumns(10);
 		
-		JLabel lblTime = new JLabel("Time");
-		lblTime.setBounds(177, 177, 46, 14);
-		panelSupport.add(lblTime);
+		JLabel lblSTime = new JLabel("Time");
+		lblSTime.setBounds(177, 177, 46, 14);
+		panelSupport.add(lblSTime);
 		
 		txtOldTime = new JTextField();
 		txtOldTime.setBounds(239, 174, 86, 20);
