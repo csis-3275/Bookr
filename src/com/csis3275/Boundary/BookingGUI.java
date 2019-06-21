@@ -84,10 +84,6 @@ public class BookingGUI {
 	
 	private ReservationDAOImpl ri = new ReservationDAOImpl(); 
 	private RoomDAOImpl roi = new RoomDAOImpl();
-	
-	
-
-	private JTextField txtRescheduleMsg;
 
 
 	/**
@@ -168,6 +164,9 @@ public class BookingGUI {
 		lblPName.setBounds(55, 112, 46, 14);
 		panelProfile.add(lblPName);
 		
+		/**
+		 * User full name in Profile page
+		 */
 		txtUserName = new JTextField();
 		txtUserName.setText("Bob Smith");
 		txtUserName.setBounds(180, 109, 135, 20);
@@ -186,17 +185,26 @@ public class BookingGUI {
 		lblResNum.setBounds(55, 234, 115, 14);
 		panelProfile.add(lblResNum);
 		
+		/**
+		 * User email in Profile page
+		 */
 		txtUserEmail = new JTextField();
 		txtUserEmail.setText("bob@gmail.com");
 		txtUserEmail.setBounds(180, 152, 135, 20);
 		panelProfile.add(txtUserEmail);
 		txtUserEmail.setColumns(10);
 		
+		/**
+		 * Table in user Profile page showing user reservation numbers created from Schedule page
+		 */
 		tblReservations = new JTable();
 
 		tblReservations.setBounds(180, 234, 135, 65);
 		panelProfile.add(tblReservations);
 		
+		/**
+		 * Button to go from user Profile page to Schedule page
+		 */
 		JButton btnSchedule = new JButton("Schedule");
 		btnSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -209,6 +217,9 @@ public class BookingGUI {
 		btnSchedule.setBounds(375, 108, 108, 23);
 		panelProfile.add(btnSchedule);
 		
+		/**
+		 * Button to go from user Profile page to Reschedule page
+		 */
 		JButton btnReschedule = new JButton("Reschedule");
 		btnReschedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -219,6 +230,9 @@ public class BookingGUI {
 		btnReschedule.setBounds(375, 151, 108, 23);
 		panelProfile.add(btnReschedule);
 		
+		/**
+		 * Button to go from user Profile page back to Login page
+		 */
 		JButton btnSignOut = new JButton("Sign Out");
 		btnSignOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -229,6 +243,9 @@ public class BookingGUI {
 		btnSignOut.setBounds(375, 195, 108, 23);
 		panelProfile.add(btnSignOut);
 		
+		/**
+		 * User phone number in profile page
+		 */
 		txtUserPhoneNumber = new JTextField();
 		txtUserPhoneNumber.setText("604-999-9932");
 		txtUserPhoneNumber.setBounds(180, 196, 135, 20);
@@ -253,14 +270,17 @@ public class BookingGUI {
 		panelLogin.add(txtPassword);
 		txtPassword.setColumns(10);
 		
+		/**
+		 * Login button
+		 */
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String userId = txtId.getText();
+				String userId = txtId.getText().trim();
 				String userPass = txtPassword.getText();
 				
 				
-				if (userId == "admin") {
+				if (userId.equals("admin")) {
 					panelSupport.setVisible(true);
 					panelLogin.setVisible(false);
 				} else {
@@ -400,7 +420,7 @@ public class BookingGUI {
 				ri.createReservation(nr);
 			}
 		});
-		btnConfirmBooking.setBounds(30, 213, 135, 23);
+		btnConfirmBooking.setBounds(204, 327, 135, 23);
 		panelSchedule.add(btnConfirmBooking);
 
 		JLabel lblSelectTime = new JLabel("Select Time");
@@ -417,8 +437,13 @@ public class BookingGUI {
 				panelSchedule.setVisible(false);
 			}
 		});
-		btnCancel_1.setBounds(175, 213, 89, 23);
+		btnCancel_1.setBounds(229, 361, 89, 23);
 		panelSchedule.add(btnCancel_1);
+		
+		JLabel lblSchedulePage = new JLabel("Schedule Page");
+		lblSchedulePage.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblSchedulePage.setBounds(204, 11, 148, 14);
+		panelSchedule.add(lblSchedulePage);
 		
 		JLabel lblEnterBookingNumber = new JLabel("Enter Booking Number");
 		lblEnterBookingNumber.setBounds(158, 63, 127, 14);
@@ -477,16 +502,6 @@ public class BookingGUI {
 		TimePicker timePicker_1 = new TimePicker();
 		timePicker_1.setBounds(328, 142, 80, 23);
 		panelReschedule.add(timePicker_1);
-		
-
-		JLabel lblMessage_1 = new JLabel("Message");
-		lblMessage_1.setBounds(194, 43, 46, 14);
-		panelReschedule.add(lblMessage_1);
-		
-		txtRescheduleMessage = new JTextField();
-		txtRescheduleMessage.setBounds(195, 68, 205, 45);
-		panelReschedule.add(txtRescheduleMessage);
-		txtRescheduleMessage.setColumns(10);
 
 		JLabel lblSelectNewTime = new JLabel("Select New Time");
 		lblSelectNewTime.setBounds(327, 119, 118, 14);
@@ -504,6 +519,9 @@ public class BookingGUI {
 		lblRescheduleNum.setBounds(204, 77, 154, 14);
 		panelSupport.add(lblRescheduleNum);
 		
+		/**
+		 * Table showing booking numbers for rescheduling requests
+		 */
 		tblReschedule = new JTable();
 
 		tblReschedule.setBounds(204, 102, 154, 64);
@@ -541,10 +559,6 @@ public class BookingGUI {
 		lblMessage.setBounds(160, 253, 165, 14);
 		panelSupport.add(lblMessage);
 		
-		JTextArea txtMessage = new JTextArea();
-		txtMessage.setBounds(30, 170, 154, 93);
-		panelSupport.add(txtMessage);
-		
 
 		JLabel lblNewDate = new JLabel("New Date");
 		lblNewDate.setBounds(10, 228, 63, 14);
@@ -573,6 +587,9 @@ public class BookingGUI {
 		panelSupport.add(txtNewNumGuests);
 		txtNewNumGuests.setColumns(10);
 		
+		/**
+		 * Support button to approve reschedule request
+		 */
 		JButton btnApprove = new JButton("Approve");
 		btnApprove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -582,12 +599,22 @@ public class BookingGUI {
 		btnApprove.setBounds(170, 374, 89, 23);
 		panelSupport.add(btnApprove);
 		
+		/**
+		 * Support button to deny reschedule request
+		 */
 		JButton btnDeny = new JButton("Deny");
+		btnDeny.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Request Denied");
+			}
+		});
 		btnDeny.setBounds(311, 374, 89, 23);
 		panelSupport.add(btnDeny);
 		
-		txtRescheduleMsg = new JTextField();
-		txtRescheduleMsg.setColumns(10);
+		/**
+		 * TextArea for showing message linked to rescheduling request number
+		 */
+		JTextArea txtRescheduleMsg = new JTextArea();
 		txtRescheduleMsg.setBounds(160, 278, 250, 77);
 		panelSupport.add(txtRescheduleMsg);
 		
