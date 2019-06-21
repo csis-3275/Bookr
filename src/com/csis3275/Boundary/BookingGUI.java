@@ -512,11 +512,11 @@ public class BookingGUI {
 		
 		JLabel lblSupportPage = new JLabel("Support Page");
 		lblSupportPage.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblSupportPage.setBounds(223, 11, 113, 25);
+		lblSupportPage.setBounds(223, 11, 154, 25);
 		panelSupport.add(lblSupportPage);
 		
 		JLabel lblRescheduleNum = new JLabel("Reschedule Request Numbers");
-		lblRescheduleNum.setBounds(204, 77, 154, 14);
+		lblRescheduleNum.setBounds(13, 81, 180, 14);
 		panelSupport.add(lblRescheduleNum);
 		
 		/**
@@ -524,34 +524,34 @@ public class BookingGUI {
 		 */
 		tblReschedule = new JTable();
 
-		tblReschedule.setBounds(204, 102, 154, 64);
+		tblReschedule.setBounds(13, 102, 154, 64);
 
 		panelSupport.add(tblReschedule);
 		
 		JLabel lblSDate = new JLabel("Date");
-		lblSDate.setBounds(10, 177, 46, 14);
+		lblSDate.setBounds(203, 81, 46, 14);
 		panelSupport.add(lblSDate);
 		
 		txtOldDate = new JTextField();
-		txtOldDate.setBounds(81, 174, 86, 20);
+		txtOldDate.setBounds(203, 110, 86, 20);
 		panelSupport.add(txtOldDate);
 		txtOldDate.setColumns(10);
 		
 		JLabel lblSTime = new JLabel("Time");
-		lblSTime.setBounds(177, 177, 46, 14);
+		lblSTime.setBounds(299, 81, 46, 14);
 		panelSupport.add(lblSTime);
 		
 		txtOldTime = new JTextField();
-		txtOldTime.setBounds(239, 174, 86, 20);
+		txtOldTime.setBounds(299, 110, 86, 20);
 		panelSupport.add(txtOldTime);
 		txtOldTime.setColumns(10);
 		
 		JLabel lblNumGuests = new JLabel("Number of Guests");
-		lblNumGuests.setBounds(333, 177, 106, 14);
+		lblNumGuests.setBounds(395, 81, 106, 14);
 		panelSupport.add(lblNumGuests);
 		
 		txtOldNumGuests = new JTextField();
-		txtOldNumGuests.setBounds(461, 174, 86, 20);
+		txtOldNumGuests.setBounds(395, 110, 86, 20);
 		panelSupport.add(txtOldNumGuests);
 		txtOldNumGuests.setColumns(10);
 		
@@ -561,29 +561,29 @@ public class BookingGUI {
 		
 
 		JLabel lblNewDate = new JLabel("New Date");
-		lblNewDate.setBounds(10, 228, 63, 14);
+		lblNewDate.setBounds(203, 152, 63, 14);
 		panelSupport.add(lblNewDate);
 		
 		txtNewDate = new JTextField();
-		txtNewDate.setBounds(83, 222, 86, 20);
+		txtNewDate.setBounds(203, 177, 86, 20);
 		panelSupport.add(txtNewDate);
 		txtNewDate.setColumns(10);
 		
 		JLabel lblNewTime = new JLabel("New Time");
-		lblNewTime.setBounds(177, 228, 52, 14);
+		lblNewTime.setBounds(299, 152, 78, 14);
 		panelSupport.add(lblNewTime);
 		
 		txtNewTime = new JTextField();
-		txtNewTime.setBounds(239, 222, 86, 20);
+		txtNewTime.setBounds(299, 177, 86, 20);
 		panelSupport.add(txtNewTime);
 		txtNewTime.setColumns(10);
 		
 		JLabel lblNewNumGuests = new JLabel("New Number of Guests");
-		lblNewNumGuests.setBounds(333, 228, 118, 14);
+		lblNewNumGuests.setBounds(395, 152, 152, 14);
 		panelSupport.add(lblNewNumGuests);
 		
 		txtNewNumGuests = new JTextField();
-		txtNewNumGuests.setBounds(461, 225, 86, 20);
+		txtNewNumGuests.setBounds(395, 177, 86, 20);
 		panelSupport.add(txtNewNumGuests);
 		txtNewNumGuests.setColumns(10);
 		
