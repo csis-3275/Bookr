@@ -1,5 +1,6 @@
 package com.csis3275.Entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,10 +17,19 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue
+	@Column(name="id")
 	private int _id;
+	
+	@Column(name="role_id")
 	private int _role_id;
+	
+	@Column(name="firstname")
 	private String _firstname;
+	
+	@Column(name="lastname")
 	private String _lastname;
+	
+	@Column(name="email")
 	private String _email;
 	
 	public User() {
