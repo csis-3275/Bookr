@@ -19,7 +19,7 @@ public class User {
 	private int _id;
 	private int _role_id;
 	private String _firstname;
-	private int _lastsname;
+	private String _lastname;
 	private String _email;
 	
 	public User() {
@@ -51,16 +51,16 @@ public class User {
 		this._firstname = _firstname;
 	}
 	/**
-	 * @return the _lastsname
+	 * @return the _lastname
 	 */
-	public int get_lastsname() {
-		return _lastsname;
+	public String get_lastname() {
+		return _lastname;
 	}
 	/**
-	 * @param _lastsname the _lastsname to set
+	 * @param _lastname the _lastname to set
 	 */
-	public void set_lastsname(int _lastsname) {
-		this._lastsname = _lastsname;
+	public void set_lastname(String _lastname) {
+		this._lastname = _lastname;
 	}
 	/**
 	 * @return the _email
