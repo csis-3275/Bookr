@@ -7,61 +7,58 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.csis3275.Entities.User;
+import com.csis3275.Entities.Room;
 
-public class UserDAOImpl implements UserDAO {
+public class RoomDAOImpl implements RoomDAO {
 
 	@Override
-	public Integer createUser(User user) {
-
+	public Integer createRoom(Room room) {
 		SessionFactory sessionFactory = null;
 		Session session = null;
 		Transaction transaction = null;
-		Integer userId = null;
-
+		Integer roomId = null;
+		
 		try {
 			sessionFactory = FactoryGenerator.getFactory();
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-
-			userId = (Integer) session.save(user);
-			transaction.commit();
-
-		} catch (HibernateException ex) {
-			if (transaction != null) {
+			
+			session.save(room);
+			transaction .commit();
+			
+		}catch(HibernateException hx) {
+			if(transaction != null) {
 				transaction.rollback();
 			}
-			System.err.println(ex.getMessage());
-		} finally {
+			System.err.println(hx.getMessage());
+		}finally {
 			session.close();
 			sessionFactory.close();
 		}
-		return userId;
+		return roomId;
 	}
 
 	@Override
-	public boolean updateUser(User user) {
-
+	public boolean updateRoom(Room room) {
 		SessionFactory sessionFactory = null;
 		Session session = null;
 		Transaction transaction = null;
-
+		
 		try {
 			sessionFactory = FactoryGenerator.getFactory();
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-
-			session.update(user);
-
-			transaction.commit();
-
-		} catch (HibernateException ex) {
-			if (transaction != null) {
+			
+			session.update(room);
+			transaction .commit();
+			
+		}catch(HibernateException hx) {
+			if(transaction != null) {
 				transaction.rollback();
 			}
-			System.err.println(ex.getMessage());
+			System.err.println(hx.getMessage());
 			return false;
-		} finally {
+		}finally {
 			session.close();
 			sessionFactory.close();
 		}
@@ -69,7 +66,57 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean deleteUser(User user) {
+	public Room readRoom(Integer roomId) {
+		SessionFactory sessionFactory = null;
+		Session session = null;
+		Transaction transaction = null;
+		Room readRoom = null;
+		try {
+			sessionFactory = FactoryGenerator.getFactory();
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			
+			readRoom = session.get(Room.class, roomId);
+			transaction.commit();
+			
+		}catch(HibernateException hx) {
+			System.err.println(hx.getMessage());
+		}finally{
+			session.close();
+			sessionFactory.close();
+		}
+		return null;
+	}
+
+
+
+	@Override
+	public ArrayList<Room> readAllRooms() {
+		SessionFactory sessionFactory = null;
+		Session session = null;
+		Transaction transaction = null;
+		ArrayList<Room> roomList = null;
+		try {
+			sessionFactory = FactoryGenerator.getFactory();
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			String query = "FROM Room";
+			
+			roomList = (ArrayList<Room>) session.createQuery(query).list();
+			
+			transaction.commit();
+			
+		}catch(HibernateException hx) {
+			System.err.println(hx.getMessage());
+		}finally {
+			session.close();
+			sessionFactory.close();
+		}
+		return roomList;
+	}
+
+	@Override
+	public boolean deleteRoom(Room room) {
 		SessionFactory sessionFactory = null;
 		Session session = null;
 		Transaction transaction = null;
@@ -77,74 +124,22 @@ public class UserDAOImpl implements UserDAO {
 			sessionFactory = FactoryGenerator.getFactory();
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-
-			session.delete(user);
-
+			
+			session.delete(room);
+			
 			transaction.commit();
-
-		} catch (HibernateException ex) {
-			if (transaction != null) {
+			
+		}catch(HibernateException hx) {
+			if(transaction != null) {
 				transaction.rollback();
 			}
-			System.err.println(ex.getMessage());
+			System.err.println(hx.getMessage());
 			return false;
-		} finally {
+		}finally {
 			session.close();
 			sessionFactory.close();
 		}
-		
 		return true;
-	}
-
-	@Override
-	public User readUser(Integer userId) {
-		SessionFactory sessionFactory = null;
-		Session session = null;
-		Transaction transaction = null;
-		User readUser = null;
-		try {
-			sessionFactory = FactoryGenerator.getFactory();
-			session = sessionFactory.openSession();
-			transaction = session.beginTransaction();
-
-			readUser = session.get(User.class, userId);
-
-			transaction.commit();
-
-		} catch (HibernateException ex) {
-			System.err.println(ex.getMessage());
-		} finally {
-			session.close();
-			sessionFactory.close();
-		}
-		
-		return readUser;
-	}
-
-	@Override
-	public ArrayList<User> readAllUser() {
-		SessionFactory sessionFactory = null;
-		Session session = null;
-		Transaction transaction = null;
-		ArrayList<User> userList = null;
-		String query = "FROM User";
-		try {
-			sessionFactory = FactoryGenerator.getFactory();
-			session = sessionFactory.openSession();
-			transaction = session.beginTransaction();
-
-			userList = (ArrayList<User>) session.createQuery(query).list();
-
-			transaction.commit();
-
-		} catch (HibernateException ex) {
-			System.err.println(ex.getMessage());
-		} finally {
-			session.close();
-			sessionFactory.close();
-		}
-		
-		return userList;	
 	}
 
 }
