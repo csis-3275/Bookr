@@ -79,6 +79,7 @@ public class BookingGUI {
 	
 	private ReservationDAOImpl ri = new ReservationDAOImpl(); 
 	private RoomDAOImpl roi = new RoomDAOImpl();
+	private UserDAOImpl ui = new UserDAOImpl();
 
 
 	/**
@@ -205,8 +206,6 @@ public class BookingGUI {
 			public void actionPerformed(ActionEvent arg0) {
 				panelSchedule.setVisible(true);
 				panelProfile.setVisible(false);
-				Reservation nr = new Reservation();
-				
 			}
 		});
 		btnSchedule.setBounds(375, 108, 108, 23);
@@ -297,6 +296,8 @@ public class BookingGUI {
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				panelRegister.setVisible(true);
+				panelLogin.setVisible(false);
 			}
 		});
 		btnRegister.setBounds(296, 269, 89, 23);
@@ -367,6 +368,21 @@ public class BookingGUI {
 		txtPhoneNumber.setColumns(10);
 		
 		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// allows a new user to register
+				String firstname = txtFName.getText();
+				String lastname = txtLName.getText();
+				String email = txtEmail.getText();
+				
+				User nu = new User();
+				nu.set_firstname(firstname);
+				nu.set_lastname(lastname);
+				nu.set_email(email);
+				nu.set_role_id(3);
+				ui.createUser(nu);
+			}
+		});
 
 
 		btnSubmit.setBounds(226, 331, 89, 23);
