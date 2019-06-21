@@ -1,4 +1,4 @@
-package com.csis3275.Boundry;
+package com.csis3275.Boundary;
 
 import java.awt.EventQueue;
 
