@@ -9,10 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JButton;
 import com.github.lgooddatepicker.components.DateTimePicker;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
@@ -71,12 +75,14 @@ public class BookingGUI {
 	private JTextField txtUserName;
 	private JTextField txtUserEmail;
 	private JTable tblReservations;
+	private DefaultTableModel tm;
 	private JTextField txtRescheduleMessage;
 	private JTextField txtUserPhoneNumber;
 	
 	
 	
 	private ReservationDAOImpl ri = new ReservationDAOImpl(); 
+	private RoomDAOImpl roi = new RoomDAOImpl();
 	
 	
 
@@ -101,6 +107,12 @@ public class BookingGUI {
 	 */
 	public BookingGUI() {
 		initialize();
+		
+		if(roi.readAllRooms().isEmpty())
+		{
+			populateRoomsTable(6);
+		}
+		
 	}
 
 	/**
@@ -184,6 +196,8 @@ public class BookingGUI {
 			public void actionPerformed(ActionEvent arg0) {
 				panelSchedule.setVisible(true);
 				panelProfile.setVisible(false);
+				Reservation nr = new Reservation();
+				
 			}
 		});
 		btnSchedule.setBounds(277, 62, 108, 23);
@@ -330,7 +344,44 @@ public class BookingGUI {
 		panelSchedule.add(txtNumGuests);
 		txtNumGuests.setColumns(10);
 		
+		
+		JLabel lblSchedulePage = new JLabel("Schedule Page");
+		lblSchedulePage.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblSchedulePage.setBounds(30, 11, 114, 20);
+		panelSchedule.add(lblSchedulePage);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"100", "101", "102", "103", "104", "105"}));
+		comboBox.setBounds(30, 126, 61, 20);
+		panelSchedule.add(comboBox);
+		
+		DatePicker datePicker = new DatePicker();
+		datePicker.setBounds(30, 67, 139, 20);
+		panelSchedule.add(datePicker);
+		
+		TimePicker timePicker = new TimePicker();
+		timePicker.setBounds(197, 65, 80, 23);
+		panelSchedule.add(timePicker);
+		
+
 		JButton btnConfirmBooking = new JButton("Confirm Booking");
+		btnConfirmBooking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int room_id = comboBox.getSelectedIndex();
+				String date = datePicker.getDateStringOrEmptyString();
+				String time = timePicker.getTimeStringOrEmptyString();
+				String status = "Confirmed";
+				String res_number = "RBADMG"+room_id;
+				
+				Reservation nr = new Reservation();
+				nr.set_reservation_number(res_number);
+				nr.set_room_id(room_id+1);
+				nr.set_date(date);
+				nr.set_time(time);
+				nr.set_status(status);
+				ri.createReservation(nr);
+			}
+		});
 		btnConfirmBooking.setBounds(30, 213, 135, 23);
 		panelSchedule.add(btnConfirmBooking);
 		
@@ -343,26 +394,6 @@ public class BookingGUI {
 		});
 		btnCancel_1.setBounds(175, 213, 89, 23);
 		panelSchedule.add(btnCancel_1);
-		
-		JLabel lblSchedulePage = new JLabel("Schedule Page");
-		lblSchedulePage.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblSchedulePage.setBounds(30, 11, 114, 20);
-		panelSchedule.add(lblSchedulePage);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"101", "102", "103", "104", "105"}));
-		comboBox.setBounds(30, 126, 61, 20);
-		panelSchedule.add(comboBox);
-		
-		DatePicker datePicker = new DatePicker();
-		datePicker.setBounds(30, 67, 139, 20);
-		panelSchedule.add(datePicker);
-		
-		TimePicker timePicker = new TimePicker();
-		timePicker.setBounds(197, 65, 80, 23);
-		panelSchedule.add(timePicker);
-		
-		
 		
 		JLabel lblEnterBookingNumber = new JLabel("Enter Booking Number");
 		lblEnterBookingNumber.setBounds(30, 43, 127, 14);
@@ -513,5 +544,84 @@ public class BookingGUI {
 		panelSupport.add(btnDeny);
 		
 		
+	}
+	
+	
+	/**
+	 * @return void
+	 * @param n = number of rooms to generate
+	 */
+	// this method generates a variable number of rooms
+	private void populateRoomsTable(int n) {
+		int room_number = 100;
+		int maximum_capacity;
+		
+		String[] types = new String[] {"Personal Office", "Team Office", "Boardroom", "Convention Hall"};
+		int t = types.length;
+		
+		ArrayList<Room> rooms = new ArrayList<Room>();
+		
+		Room new_room = new Room();
+		
+		for(int i = 0; i < n; i++)
+		{
+			int type_index = randomize(t, 0);
+			new_room.set_room_number(room_number++);
+			new_room.set_type(types[type_index]);
+			new_room.set_availability("Available");
+			switch(type_index)
+			{
+				case 0:
+					new_room.set_maximum_capacity(1);
+					break;
+				case 1:
+					new_room.set_maximum_capacity(4);
+					break;
+				case 2: 
+					new_room.set_maximum_capacity(10);
+					break;
+				case 3: 
+					new_room.set_maximum_capacity(50);
+					break;
+				default:
+					new_room.set_maximum_capacity(1);
+					break;
+			}
+			
+			roi.createRoom(new_room);
+			rooms.add(new_room);
+		}
+	}
+	
+	private int randomize(int x, int y)
+	{
+		int rand = (int)((Math.random()*x)+y);
+		return rand;
+	}
+	
+	private void updateTable() {
+
+		tm = new DefaultTableModel();
+			
+		//Setup the columns
+		tm.addColumn("Id");
+		tm.addColumn("Room");
+		tm.addColumn("Date");
+		tm.addColumn("Time");
+		tm.addColumn("Reservation Number");
+		
+		//Populate the rows
+		ArrayList<Reservation> res = new ArrayList<Reservation>();
+		res = ri.readAllReservations();
+		
+		for (Reservation r : res) {
+			tm.addRow(r.getVector());
+		}
+		
+		tblReservations.setModel(tm);
+		
+		
+		//Default Row Sorter
+		tblReservations.setRowSorter(new TableRowSorter(tm));
 	}
 }
