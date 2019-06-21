@@ -326,6 +326,9 @@ public class BookingGUI {
 		lblFirstName.setBounds(212, 73, 79, 14);
 		panelRegister.add(lblFirstName);
 		
+		/**
+		 * First name field in Register page
+		 */
 		txtFName = new JTextField();
 
 		txtFName.setBounds(212, 98, 126, 20);
@@ -338,6 +341,9 @@ public class BookingGUI {
 		lblLastName.setBounds(212, 126, 79, 14);
 		panelRegister.add(lblLastName);
 		
+		/**
+		 * Last name field in Register page
+		 */
 		txtLName = new JTextField();
 		txtLName.setBounds(212, 151, 126, 20);
 
@@ -348,6 +354,9 @@ public class BookingGUI {
 		lblEmail.setBounds(212, 182, 63, 14);
 		panelRegister.add(lblEmail);
 		
+		/**
+		 * Email field in Register page
+		 */
 		txtEmail = new JTextField();
 
 		txtEmail.setBounds(212, 207, 126, 20);
@@ -361,12 +370,18 @@ public class BookingGUI {
 		lblPhoneNumber.setBounds(212, 243, 103, 14);
 		panelRegister.add(lblPhoneNumber);
 		
+		/**
+		 * Phone number field in Register page
+		 */
 		txtPhoneNumber = new JTextField();
 		txtPhoneNumber.setBounds(212, 268, 126, 20);
 
 		panelRegister.add(txtPhoneNumber);
 		txtPhoneNumber.setColumns(10);
 		
+		/**
+		 * Submit button in Register page
+		 */
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -393,6 +408,20 @@ public class BookingGUI {
 		lblRegistrationPage.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblRegistrationPage.setBounds(212, 11, 126, 30);
 		panelRegister.add(lblRegistrationPage);
+		
+		/**
+		 * Cancel button in Register page, take you back to Login page
+		 */
+		JButton btnCancel_2 = new JButton("Cancel");
+		btnCancel_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelLogin.setVisible(true);
+				panelRegister.setVisible(false);
+			}
+		});
+		
+		btnCancel_2.setBounds(226, 365, 89, 23);
+		panelRegister.add(btnCancel_2);
 		
 		
 		
