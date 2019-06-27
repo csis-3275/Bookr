@@ -8,9 +8,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.csis3275.Entities.BookingTransaction;
-
+/**
+ * Class Implemented BookingTransactionDAO
+ * @author Gahyun Lee 300289068
+ *
+ */
 public class BookingTransactionDAOImpl implements BookingTransactionDAO {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Integer createTransaction(BookingTransaction bTransaction) {
 
@@ -39,6 +46,9 @@ public class BookingTransactionDAOImpl implements BookingTransactionDAO {
 		return bTransId;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean updateTransaction(BookingTransaction bTransaction) {
 
@@ -69,6 +79,9 @@ public class BookingTransactionDAOImpl implements BookingTransactionDAO {
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public BookingTransaction readTransaction(Integer bTransactionId) {
 		SessionFactory sessionFactory = null;
@@ -90,6 +103,9 @@ public class BookingTransactionDAOImpl implements BookingTransactionDAO {
 		return bTransaction;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean deleteTransaction(BookingTransaction bTransaction) {
 		SessionFactory sessionFactory = null;
@@ -113,6 +129,9 @@ public class BookingTransactionDAOImpl implements BookingTransactionDAO {
 	}
 	
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<BookingTransaction> readAllTransactions() {
 		SessionFactory sessionFactory = null;
