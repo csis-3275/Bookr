@@ -478,6 +478,7 @@ public class BookingGUI {
 				String time = timePicker.getTimeStringOrEmptyString();
 				String status = "Confirmed";
 				String res_number = "RBADMG"+room_id;
+				String guest = txtNumGuests.getText();
 				
 				Reservation nr = new Reservation();
 				nr.set_reservation_number(res_number);
