@@ -3,6 +3,10 @@ package com.csis3275.Entities;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 
 import javax.persistence.Column;
@@ -14,7 +18,7 @@ import javax.persistence.Table;
 
 /**
  * @author Ayodeji Tolu-ojo 300249754
- *
+ * @author Gahyun Lee 300289068
  */
 
 public class Reservation {
@@ -35,11 +39,19 @@ public class Reservation {
 	@Column(name="status")
 	private String _status;
 	
-	@Column(name="res_number")
+	@Column(name="res_number")  
 	private String _reservation_number;
 	
+	
+	/**
+	 * Constructor generates reservation numbers when Reservation object created
+	 */
 	public Reservation() {
-		
+		LocalDateTime today = LocalDateTime.now();	
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");  
+		String dateTime = today.format(formatter);
+
+		_reservation_number = "RS" + dateTime;
 	}
 	
 	/**
@@ -68,21 +80,6 @@ public class Reservation {
 	 */
 	public void set_reservation_number(String _reservation_number) {
 		this._reservation_number = _reservation_number;
-	}
-
-
-	/**
-	 * @return the reservation_number
-	 */
-	public String getReservation_number() {
-		return _reservation_number;
-	}
-
-	/**
-	 * @param reservation_number the reservation_number to set
-	 */
-	public void setReservation_number(String reservation_number) {
-		this._reservation_number = reservation_number;
 	}
 
 	/**
@@ -134,6 +131,10 @@ public class Reservation {
 		return _id;
 	}
 	
+	public void set_id(int id) {
+		this._id = id;
+	}
+	
 	public Vector getVector() {
 		Vector v = new Vector();
 		v.add(_id);
@@ -144,5 +145,6 @@ public class Reservation {
 		
 		return v;
 	}
+	
 	
 }

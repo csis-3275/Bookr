@@ -23,14 +23,24 @@ public class ReservationDAOImpl implements ReservationDAO {
 		SessionFactory sessionFactory = null;
 		Session session = null;
 		Transaction transaction = null;
-		Integer reserveId = null;
+		Integer reserveNum = null;
+		
+//		LocalDate today = LocalDate.now();
+//		int date = today.getDayOfMonth();
+//		int month = today.getMonthValue();
+//		int year = today.getYear();
+//		
+//		instanceCounter++;
+//		counter = instanceCounter;
+//		_reservation_number = "RS" + year + month+date + counter;
+//		
 
 		try {
 			sessionFactory = FactoryGenerator.getFactory();
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-
-			reserveId = (Integer) session.save(reservation);
+			
+			reserveNum = (Integer) session.save(reservation);
 			transaction.commit();
 
 		} catch (HibernateException ex) {
@@ -42,7 +52,7 @@ public class ReservationDAOImpl implements ReservationDAO {
 			session.close();
 			sessionFactory.close();
 		}
-		return reserveId;
+		return reserveNum;
 	}
 
 	/**
@@ -146,7 +156,10 @@ public class ReservationDAOImpl implements ReservationDAO {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			
-			session.delete(reservation);
+			String hql = "DELETE FROM Reservation WHERE res_number = : resNum";
+			session.createQuery(hql)
+			.setParameter("resNum", reservation.get_reservation_number())
+			.executeUpdate();
 			
 			transaction.commit();
 			
