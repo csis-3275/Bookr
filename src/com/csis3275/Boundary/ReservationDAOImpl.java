@@ -8,9 +8,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.csis3275.Entities.Reservation;
-
+/**
+ * Class Implemented ReservationDAO
+ * @author Gahyun Lee 300289068
+ *
+ */
 public class ReservationDAOImpl implements ReservationDAO {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Integer createReservation(Reservation reservation) {
 		SessionFactory sessionFactory = null;
@@ -38,6 +45,9 @@ public class ReservationDAOImpl implements ReservationDAO {
 		return reserveId;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean updateReservation(Reservation reservation) {
 
@@ -68,7 +78,9 @@ public class ReservationDAOImpl implements ReservationDAO {
 
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Reservation readReservation(Integer reservationId) {
 		SessionFactory sessionFactory = null;
@@ -92,6 +104,9 @@ public class ReservationDAOImpl implements ReservationDAO {
 		return readReserv;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Reservation> readAllReservations() {
 		SessionFactory sessionFactory = null;
@@ -116,6 +131,9 @@ public class ReservationDAOImpl implements ReservationDAO {
 		return reservList;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean deleteReservation(Reservation reservation) {
 		

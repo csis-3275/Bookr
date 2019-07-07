@@ -8,9 +8,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.csis3275.Entities.User;
-
+/**
+ * Class Implemented UserDAO
+ * @author Gahyun Lee 300289068
+ *
+ */
 public class UserDAOImpl implements UserDAO {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Integer createUser(User user) {
 
@@ -39,6 +46,9 @@ public class UserDAOImpl implements UserDAO {
 		return userId;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean updateUser(User user) {
 
@@ -68,6 +78,9 @@ public class UserDAOImpl implements UserDAO {
 		return true;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean deleteUser(User user) {
 		SessionFactory sessionFactory = null;
@@ -96,6 +109,9 @@ public class UserDAOImpl implements UserDAO {
 		return true;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public User readUser(Integer userId) {
 		SessionFactory sessionFactory = null;
@@ -121,6 +137,9 @@ public class UserDAOImpl implements UserDAO {
 		return readUser;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<User> readAllUser() {
 		SessionFactory sessionFactory = null;

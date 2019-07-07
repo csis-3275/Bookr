@@ -8,9 +8,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.csis3275.Entities.Room;
-
+/**
+ * Class Implemented RoomDAO
+ * @author Gahyun Lee 300289068
+ *
+ */
 public class RoomDAOImpl implements RoomDAO {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Integer createRoom(Room room) {
 		SessionFactory sessionFactory = null;
@@ -38,6 +45,9 @@ public class RoomDAOImpl implements RoomDAO {
 		return roomId;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean updateRoom(Room room) {
 		SessionFactory sessionFactory = null;
@@ -65,6 +75,9 @@ public class RoomDAOImpl implements RoomDAO {
 		return true;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Room readRoom(Integer roomId) {
 		SessionFactory sessionFactory = null;
@@ -89,7 +102,9 @@ public class RoomDAOImpl implements RoomDAO {
 	}
 
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Room> readAllRooms() {
 		SessionFactory sessionFactory = null;
@@ -115,6 +130,9 @@ public class RoomDAOImpl implements RoomDAO {
 		return roomList;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean deleteRoom(Room room) {
 		SessionFactory sessionFactory = null;
