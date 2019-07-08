@@ -106,7 +106,7 @@ public class BookingGUI {
 		
 		if(roi.readAllRooms().isEmpty())
 		{
-			populateRoomsTable(6);
+			populateRoomsTable(30);
 		}
 		
 	}

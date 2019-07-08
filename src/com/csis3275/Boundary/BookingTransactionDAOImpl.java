@@ -115,6 +115,7 @@ public class BookingTransactionDAOImpl implements BookingTransactionDAO {
 			sessionFactory = FactoryGenerator.getFactory();
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
+			
 		}catch(HibernateException hx) {
 			if (transaction != null) {
 				transaction.rollback();
