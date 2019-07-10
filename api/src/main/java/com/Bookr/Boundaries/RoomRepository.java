@@ -14,5 +14,5 @@ import com.Bookr.Entities.Room;
  */
 @Repository
 public interface RoomRepository extends CrudRepository<Room, Integer> {
-	
+	public Room getById(Integer id);
 }

@@ -26,4 +26,8 @@ public class RoomService {
 	public Iterable<Room> findAll(){
 		return roomRepository.findAll();
 	}
+	
+	public Room getById(Integer id) {
+		return roomRepository.getById(id);
+	}
 }
