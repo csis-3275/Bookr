@@ -23,16 +23,16 @@ public class Room {
 	@Id
 	@GeneratedValue
 	@Column(name="id")
-	private int _id;
+	private Integer _id;
 	
 	@Column(name="type")
 	private String _type;
 	
 	@Column(name="room_number")
-	private int _room_number;
+	private Integer _room_number;
 	
 	@Column(name="max_capacity")
-	private int _maximum_capacity;
+	private Integer _maximum_capacity;
 	
 	@Column(name="availability")
 	private String _availability;
@@ -49,19 +49,19 @@ public class Room {
 		this._type = _type;
 	}
 
-	public int get_room_number() {
+	public Integer get_room_number() {
 		return _room_number;
 	}
 
-	public void set_room_number(int _room_number) {
+	public void set_room_number(Integer _room_number) {
 		this._room_number = _room_number;
 	}
 
-	public int get_maximum_capacity() {
+	public Integer get_maximum_capacity() {
 		return _maximum_capacity;
 	}
 
-	public void set_maximum_capacity(int _maximum_capacity) {
+	public void set_maximum_capacity(Integer _maximum_capacity) {
 		this._maximum_capacity = _maximum_capacity;
 	}
 
@@ -73,7 +73,7 @@ public class Room {
 		this._availability = _availability;
 	}
 
-	public int get_id() {
+	public Integer get_id() {
 		return _id;
 	}
 }

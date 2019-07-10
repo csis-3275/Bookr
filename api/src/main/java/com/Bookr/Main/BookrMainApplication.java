@@ -10,6 +10,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages = {"com.Bookr.Controllers", "com.Bookr.Services"})
 @EntityScan("com.Bookr.Entities")
 @EnableJpaRepositories("com.Bookr.Boundaries")
+
+/**
+ * 
+ * @author Ayodeji Tolu-ojo 300249754
+ *
+ */
+
 public class BookrMainApplication {
 
 	public static void main(String[] args) {
