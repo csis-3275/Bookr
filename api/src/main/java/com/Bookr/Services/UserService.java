@@ -16,7 +16,7 @@ import com.Bookr.Entities.User;
 @Service
 public class UserService {
 	@Autowired
-	Private UserRepository userRepository;
+	private UserRepository userRepository;
 	
 	public User saveOrUpdateUser(User user) {
 		return userRepository.save(user);
@@ -31,7 +31,7 @@ public class UserService {
 	}
 	
 	public void delete(Integer id) {
-		User user = findById(id);
+		User user = getById(id);
 		userRepository.delete(user);
 	}
 }

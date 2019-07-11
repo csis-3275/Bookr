@@ -33,7 +33,7 @@ public class RoomService {
 	
 	public void delete(Integer id)
 	{
-		Room selected_room = roomRepository.getById(id);
+		Room selected_room = getById(id);
 		roomRepository.delete(selected_room);
 	}
 }
