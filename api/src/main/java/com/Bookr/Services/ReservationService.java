@@ -29,4 +29,9 @@ public class ReservationService {
 	public Reservation getById(Integer id) {
 		return reservationRepository.getById(id);
 	}
+	
+	public void delete(Integer id) {
+		Reservation reservation = findById(id);
+		reservationRepository.delete(reservation);
+	}
 }
