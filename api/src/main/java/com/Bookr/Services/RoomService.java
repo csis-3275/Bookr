@@ -30,4 +30,9 @@ public class RoomService {
 	public Room getById(Integer id) {
 		return roomRepository.getById(id);
 	}
+	
+	public void delete(Integer id) {
+		Room room = findById(id);
+		roomRepository.delete(room);
+	}
 }
