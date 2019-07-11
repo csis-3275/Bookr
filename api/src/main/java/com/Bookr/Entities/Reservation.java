@@ -20,6 +20,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author Ayodeji Tolu-ojo 300249754
  *
@@ -32,26 +34,27 @@ public class Reservation {
 	SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@ManyToOne(targetEntity=Room.class)
 	@JoinColumn(name="room_id", referencedColumnName="id")
 	@NotNull
+	@JsonIgnore
 	private Room _room;
 	
 	@ManyToOne(targetEntity=User.class)
 	@JoinColumn(name="user_id", referencedColumnName="id")
-	@NotNull
+	@JsonIgnore
 	private User _user;
 	
 	@NotNull
 	@Column(name="start_date")
-	private Date _start_date;
+	private String _start_date;
 	
 	@NotNull
 	@Column(name="end_date")
-	private Date _end_date;
+	private String _end_date;
 	
 	@NotEmpty
 	@Column(name="reservation_number")
@@ -74,7 +77,7 @@ public class Reservation {
 	/**
 	 * @return the _start_date
 	 */
-	public Date get_start_date() {
+	public String get_start_date() {
 		return _start_date;
 	}
 
@@ -82,13 +85,13 @@ public class Reservation {
 	 * @param _start_date the _start_date to set
 	 */
 	public void set_start_date(Date _start_date) {
-		this._start_date = _start_date;
+		this._start_date = sdf.format(_start_date);
 	}
 
 	/**
 	 * @return the _end_date
 	 */
-	public Date get_end_date() {
+	public String get_end_date() {
 		return _end_date;
 	}
 
@@ -96,7 +99,7 @@ public class Reservation {
 	 * @param _end_date the _end_date to set
 	 */
 	public void set_end_date(Date _end_date) {
-		this._end_date = _end_date;
+		this._end_date = sdf.format(_end_date);
 	}
 
 	/**

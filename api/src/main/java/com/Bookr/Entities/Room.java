@@ -27,7 +27,7 @@ import javax.persistence.Column;
 @Table(name="rooms")
 public class Room {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	

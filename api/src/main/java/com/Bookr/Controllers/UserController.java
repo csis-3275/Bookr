@@ -52,20 +52,9 @@ public class UserController {
 	}
 	
 	
-	@PostMapping("/create_user")
-	private ResponseEntity<?> createNewUser(@Valid @RequestBody User user, BindingResult result) 
+	@PostMapping("")
+	private ResponseEntity<?> createNewUser(@Valid @RequestBody User user) 
 	{
-		if(result.hasErrors())
-		{
-			Map<String, String> error_map = new HashMap<>();
-			
-			for(FieldError field_error: result.getFieldErrors()) 
-			{
-				error_map.put(field_error.getField(), field_error.getDefaultMessage());
-			}
-			
-			return new ResponseEntity<Map<String, String>>(error_map, HttpStatus.BAD_REQUEST);
-		}
 		
 		User new_user = userService.saveOrUpdateUser(user);
 		return new ResponseEntity<User>(new_user, HttpStatus.CREATED);
