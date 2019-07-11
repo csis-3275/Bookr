@@ -26,7 +26,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@OneToMany(mappedBy="_user")
+	@OneToMany(mappedBy="_role")
 	@NotNull
 	private List<User> _users;
 }

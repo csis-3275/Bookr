@@ -50,4 +50,25 @@ public class User {
 	@NotBlank
 	@Column(name="email")
 	private String email;
+	
+	
+	/**
+	 * @void add new reservation to _reservations
+	 * @param reserve
+	 * 
+	 */
+	public void add_reservations(Reservation reserve)
+	{
+		this._reservations.add(reserve);
+	}
+	
+	/**
+	 * @return _reservations
+	 * @param reserve
+	 * 
+	 */
+	public Object[] get_reservations()
+	{
+		return this._reservations.toArray();
+	}
 }
