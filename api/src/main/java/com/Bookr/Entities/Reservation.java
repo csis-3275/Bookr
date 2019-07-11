@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -38,15 +40,20 @@ public class Reservation {
 	@NotNull
 	private Room _room;
 	
+	@ManyToOne(targetEntity=User.class)
+	@JoinColumn(name="user_id", referencedColumnName="id")
+	@NotNull
+	private User _user;
+	
+	@NotNull
 	@Column(name="start_date")
 	private Date _start_date;
 	
+	@NotNull
 	@Column(name="end_date")
 	private Date _end_date;
 	
-	@Column(name="status")
-	private String _status;
-	
+	@NotEmpty
 	@Column(name="reservation_number")
 	private String _res_number;
 	
@@ -90,20 +97,6 @@ public class Reservation {
 	 */
 	public void set_end_date(Date _end_date) {
 		this._end_date = _end_date;
-	}
-
-	/**
-	 * @return the _status
-	 */
-	public String get_status() {
-		return _status;
-	}
-
-	/**
-	 * @param _status the _status to set
-	 */
-	public void set_status(String _status) {
-		this._status = _status;
 	}
 
 	/**
