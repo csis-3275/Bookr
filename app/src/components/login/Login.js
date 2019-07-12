@@ -7,11 +7,26 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {  }
+        this.handleChange = this.handleChange.bind(this);
+        this.state = { 
+            username: "", 
+            password: ""
+         }
+    }
+
+    handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
     handleSubmit(e){
-
+        e.preventDefault();
+        const user = {
+            username: this.state.username, 
+            password: this.state.password 
+        };
+        console.log(user);
     }
 
     render() { 
@@ -19,7 +34,7 @@ class Login extends Component {
 
         return ( 
             // <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form noValidate className="bg-light py-5 px-5 rounded">
+            <Form noValidate className="bg-light py-5 px-5 rounded" onSubmit={this.handleSubmit}>
                 <Form.Row>
                     <Form.Group as={Col} sm="7">
                         <Form.Row>
@@ -44,6 +59,9 @@ class Login extends Component {
                             type="text"
                             placeholder="Username..."
                             aria-describedby="inputGroupPrepend"
+                            value={this.state.username}
+                            onChange={this.handleChange}
+                            name="username"
                             required
                             />
                             <Form.Control.Feedback type="invalid">
@@ -63,6 +81,9 @@ class Login extends Component {
                             type="password"
                             placeholder="Password..."
                             aria-describedby="inputGroupPrepend"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                            name="password"
                             required
                             />
                             <Form.Control.Feedback type="invalid">
