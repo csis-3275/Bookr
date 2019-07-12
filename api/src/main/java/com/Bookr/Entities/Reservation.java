@@ -37,16 +37,13 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne(targetEntity=Room.class)
-	@JoinColumn(name="room_id", referencedColumnName="id")
+	@Column(name="room_id")
 	@NotNull
-	@JsonIgnore
-	private Room _room;
+	private Integer _room_id;
 	
-	@ManyToOne(targetEntity=User.class)
-	@JoinColumn(name="user_id", referencedColumnName="id")
+	@Column(name="user_id")
 	@JsonIgnore
-	private User _user;
+	private Integer _user_id;
 	
 	@NotNull
 	@Column(name="start_date")
@@ -60,18 +57,33 @@ public class Reservation {
 	@Column(name="reservation_number")
 	private String _res_number;
 	
+
+	/**
+	 * @return the _user_id
+	 */
+	public Integer get_user_id() {
+		return _user_id;
+	}
+
+	/**
+	 * @param _user_id the _user_id to set
+	 */
+	public void set_user_id(Integer _user_id) {
+		this._user_id = _user_id;
+	}
+	
 	/**
 	 * @return the _room_id
 	 */
-	public Room get_room() {
-		return _room;
+	public Integer get_room() {
+		return _room_id;
 	}
 
 	/**
 	 * @param _room_id the _room_id to set
 	 */
-	public void set_room_id(Room _room) {
-		this._room = _room;
+	public void set_room_id(Integer _room_id) {
+		this._room_id = _room_id;
 	}
 
 	/**

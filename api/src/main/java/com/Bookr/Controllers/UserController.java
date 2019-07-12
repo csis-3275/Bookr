@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Bookr.Entities.UserRole;
 import com.Bookr.Entities.User;
+import com.Bookr.Services.RoleService;
 import com.Bookr.Services.UserService;
 
 /**
@@ -36,11 +38,18 @@ import com.Bookr.Services.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	private RoleService roleService;
 	
 	@GetMapping("/all")
 	private Iterable<User> getAllUsers()
 	{
 		return userService.findAll();
+	}
+	
+	@GetMapping("/all_roles")
+	private Iterable<UserRole> getAllRoles()
+	{
+		return roleService.findAllRoles();
 	}
 	
 	
@@ -53,11 +62,11 @@ public class UserController {
 	
 	
 	@PostMapping("")
-	private ResponseEntity<?> createNewUser(@Valid @RequestBody User user) 
+	private ResponseEntity<?> createNewUser(@RequestBody User user) 
 	{
-		
+//		user.set_role(3);
 		User new_user = userService.saveOrUpdateUser(user);
-		return new ResponseEntity<User>(new_user, HttpStatus.CREATED);
+		return new ResponseEntity<User>(user, HttpStatus.CREATED);
 	}
 	
 	

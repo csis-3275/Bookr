@@ -34,15 +34,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToMany(mappedBy="_user")
-	@JsonIgnore
-	private List<Reservation> _reservations;
-	
-	@ManyToOne(targetEntity=Role.class, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="role_id", referencedColumnName="id")
+	@OneToMany(targetEntity=Reservation.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@NotNull
 	@JsonIgnore
-	private Role _role;
+	@JoinColumn(name="user_id", referencedColumnName="id")
+	private List<Reservation> _reservations;
+	
+	@Column(name="role_id")
+	@NotNull
+	private Integer _role_id;
 	
 	@Column(name="firstname")
 	@NotBlank(message="firstname cannot be blank")
@@ -80,15 +80,15 @@ public class User {
 	/**
 	 * @return the _role
 	 */
-	public Role get_role() {
-		return _role;
+	public Integer get_role() {
+		return _role_id;
 	}
 
 	/**
 	 * @param _role the _role to set
 	 */
-	public void set_role(Role _role) {
-		this._role = _role;
+	public void set_role(Integer _role_id) {
+		this._role_id = _role_id;
 	}
 
 	/**
