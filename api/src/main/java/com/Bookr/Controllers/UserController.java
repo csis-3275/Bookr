@@ -61,12 +61,12 @@ public class UserController {
 	}
 	
 	
-	@PostMapping("")
-	private ResponseEntity<?> createNewUser(@RequestBody User user) 
+	@PostMapping("/create_user")
+	private ResponseEntity<?> createNewUser(@Valid @RequestBody User user) 
 	{
 //		user.set_role(3);
 		User new_user = userService.saveOrUpdateUser(user);
-		return new ResponseEntity<User>(user, HttpStatus.CREATED);
+		return new ResponseEntity<User>(new_user, HttpStatus.CREATED);
 	}
 	
 	

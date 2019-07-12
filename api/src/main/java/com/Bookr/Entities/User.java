@@ -35,7 +35,6 @@ public class User {
 	private Integer id;
 	
 	@OneToMany(targetEntity=Reservation.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@NotNull
 	@JsonIgnore
 	@JoinColumn(name="user_id", referencedColumnName="id")
 	private List<Reservation> _reservations;
@@ -55,6 +54,9 @@ public class User {
 	@Column(name="email")
 	@NotBlank(message="email cannot be blank")
 	private String _email;
+	
+	@Column(name="password")
+	
 	
 	
 	/**

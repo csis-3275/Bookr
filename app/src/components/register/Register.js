@@ -4,12 +4,31 @@ import { Form, InputGroup, Button, Col } from 'react-bootstrap';
 class Register extends Component {
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {  }
+        this.state = { 
+            firstname: "", 
+            lastname: "", 
+            email: "", 
+            role: 3
+         }
+    }
+
+    handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
     handleSubmit(e){
-
+        e.preventDefault();
+        const new_user = {
+            firstname: this.state.firstname, 
+            lastname: this.state.lastname, 
+            email: this.state.email, 
+            role: this.state.role
+        };
+        console.log(new_user);
     }
 
     render() { 
@@ -17,7 +36,7 @@ class Register extends Component {
 
         return ( 
             // <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Form noValidate>
+                <Form noValidate onSubmit={this.onSubmit}>
                 <Form.Row>
                     <Form.Group as={Col} md="4" controlId="validationCustom01">
                         <Form.Label>First name</Form.Label>
@@ -25,7 +44,9 @@ class Register extends Component {
                             required
                             type="text"
                             placeholder="First name"
-                            defaultValue="Mark"
+                            value={this.state.firstname}
+                            onChange={this.handleChange}
+                            name="firstname"
                         />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
@@ -35,7 +56,9 @@ class Register extends Component {
                             required
                             type="text"
                             placeholder="Last name"
-                            defaultValue="Otto"
+                            value={this.state.lastname}
+                            onChange={this.handleChange}
+                            name="lastname"
                         />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
@@ -46,48 +69,21 @@ class Register extends Component {
                                 <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                             </InputGroup.Prepend>
                             <Form.Control
-                            type="text"
-                            placeholder="Username"
+                            type="email"
+                            placeholder="Email"
                             aria-describedby="inputGroupPrepend"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                            name="email"
                             required
                             />
                             <Form.Control.Feedback type="invalid">
-                                Please choose a username.
+                                Please enter your email address.
                             </Form.Control.Feedback>
                         </InputGroup>
                     </Form.Group>
                 </Form.Row>
-                <Form.Row>
-                    <Form.Group as={Col} md="6" controlId="validationCustom03">
-                        <Form.Label>City</Form.Label>
-                        <Form.Control type="text" placeholder="City" required />
-                        <Form.Control.Feedback type="invalid">
-                            Please provide a valid city.
-                        </Form.Control.Feedback>
-                    </Form.Group>
-                    <Form.Group as={Col} md="3" controlId="validationCustom04">
-                        <Form.Label>State</Form.Label>
-                        <Form.Control type="text" placeholder="State" required />
-                        <Form.Control.Feedback type="invalid">
-                            Please provide a valid state.
-                        </Form.Control.Feedback>
-                    </Form.Group>
-                    <Form.Group as={Col} md="3" controlId="validationCustom05">
-                        <Form.Label>Zip</Form.Label>
-                        <Form.Control type="text" placeholder="Zip" required />
-                        <Form.Control.Feedback type="invalid">
-                            Please provide a valid zip.
-                        </Form.Control.Feedback>
-                    </Form.Group>
-                </Form.Row>
-                <Form.Group>
-                    <Form.Check
-                    required
-                    label="Agree to terms and conditions"
-                    feedback="You must agree before submitting."
-                    />
-                </Form.Group>
-                <Button type="submit">Submit form</Button>
+                <Button type="submit" className="py-2 px-5">Register</Button>
             </Form>
          );
     }
