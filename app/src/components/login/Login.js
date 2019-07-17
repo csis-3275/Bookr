@@ -44,9 +44,6 @@ class Login extends Component {
                             <h5 className="text-muted font-weight-light">Fill the form below to gain access</h5>
                         </Form.Row>
                     </Form.Group>
-                    <Form.Group as={Col} sm="5">
-                        <FontAwesomeIcon icon={faUser} />
-                    </Form.Group>
                 </Form.Row>
                 <Form.Row>
                     <Form.Group as={Col} md="10" controlId="validationCustomUsername">
