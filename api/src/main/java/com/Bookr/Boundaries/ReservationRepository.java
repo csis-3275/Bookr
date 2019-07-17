@@ -6,7 +6,7 @@ package com.Bookr.Boundaries;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bookr.Entities.Reservation;
+import com.Bookr.Entities.Reservation;
 
 /**
  * @author Minh Dinh 300286942

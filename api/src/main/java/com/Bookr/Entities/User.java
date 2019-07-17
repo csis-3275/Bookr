@@ -6,8 +6,10 @@ package com.Bookr.Entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +20,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author Ayodeji Tolu-ojo 300249754
  *
@@ -27,29 +31,32 @@ import javax.validation.constraints.NotNull;
 @Table(name="users")
 public class User {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotNull
-	@OneToMany(mappedBy="_user")
+	@OneToMany(targetEntity=Reservation.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	@JoinColumn(name="user_id", referencedColumnName="id")
 	private List<Reservation> _reservations;
 	
-	@ManyToOne(targetEntity=Role.class)
-	@JoinColumn(name="role_id", referencedColumnName="id")
+	@Column(name="role_id")
 	@NotNull
-	private Role _role;
+	private Integer _role_id;
 	
-	@NotBlank
 	@Column(name="firstname")
-	private Date _firstname;
+	@NotBlank(message="firstname cannot be blank")
+	private String _firstname;
 	
-	@NotBlank
 	@Column(name="lastname")
-	private Date _lastname;
+	@NotBlank(message="lastname cannot be blank")
+	private String _lastname;
 	
-	@NotBlank
 	@Column(name="email")
-	private String email;
+	@NotBlank(message="email cannot be blank")
+	private String _email;
+	
+	@Column(name="password")
+	
 	
 	
 	/**
@@ -70,5 +77,68 @@ public class User {
 	public Object[] get_reservations()
 	{
 		return this._reservations.toArray();
+	}
+	
+	/**
+	 * @return the _role
+	 */
+	public Integer get_role() {
+		return _role_id;
+	}
+
+	/**
+	 * @param _role the _role to set
+	 */
+	public void set_role(Integer _role_id) {
+		this._role_id = _role_id;
+	}
+
+	/**
+	 * @return the _firstname
+	 */
+	public String get_firstname() {
+		return _firstname;
+	}
+
+	/**
+	 * @param _firstname the _firstname to set
+	 */
+	public void set_firstname(String _firstname) {
+		this._firstname = _firstname;
+	}
+
+	/**
+	 * @return the _lastname
+	 */
+	public String get_lastname() {
+		return _lastname;
+	}
+
+	/**
+	 * @param _lastname the _lastname to set
+	 */
+	public void set_lastname(String _lastname) {
+		this._lastname = _lastname;
+	}
+
+	/**
+	 * @return the _email
+	 */
+	public String get_email() {
+		return _email;
+	}
+
+	/**
+	 * @param _email the _email to set
+	 */
+	public void set_email(String _email) {
+		this._email = _email;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
 	}
 }

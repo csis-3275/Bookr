@@ -6,7 +6,7 @@ package com.Bookr.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Bookr.Boundaries.RoomRepository;
+import com.Bookr.Boundaries.ReservationRepository;
 import com.Bookr.Entities.Reservation;
 
 /**
@@ -31,7 +31,7 @@ public class ReservationService {
 	}
 	
 	public void delete(Integer id) {
-		Reservation reservation = findById(id);
+		Reservation reservation = getById(id);
 		reservationRepository.delete(reservation);
 	}
 }

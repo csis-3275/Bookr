@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bookr.Boundaries;
+package com.Bookr.Boundaries;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

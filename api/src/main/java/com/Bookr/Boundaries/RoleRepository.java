@@ -6,14 +6,14 @@ package com.Bookr.Boundaries;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.Bookr.Entities.Room;
+import com.Bookr.Entities.UserRole;
 
 /**
  * @author Ayodeji Tolu-ojo 300249754
  *
  */
+
 @Repository
-public interface RoomRepository extends CrudRepository<Room, Integer> {
-	public Room getById(Integer id);
-	public void deleteById(Integer id);
+public interface RoleRepository extends CrudRepository<UserRole, Integer> {
+	public UserRole getById(Integer id);
 }
