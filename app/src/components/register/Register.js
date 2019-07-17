@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, InputGroup, Button, Col } from 'react-bootstrap';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './styles/register.css';
 
 class Register extends Component {
     constructor(props) {
@@ -11,7 +12,8 @@ class Register extends Component {
         this.state = { 
             firstname: "", 
             lastname: "", 
-            email: "", 
+            email: "",
+            reg_password: "",  
             role: 3
          }
     }
@@ -28,7 +30,8 @@ class Register extends Component {
             firstname: this.state.firstname, 
             lastname: this.state.lastname, 
             email: this.state.email, 
-            role: this.state.role
+            role: this.state.role, 
+            reg_password: this.state.reg_password
         };
         console.log(new_user);
     }
@@ -38,14 +41,14 @@ class Register extends Component {
 
         return ( 
             // <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form noValidate onSubmit={this.onSubmit} className="bg-light py-5 px-5 rounded">
+            <Form noValidate onSubmit={this.onSubmit} className="bg-glass-blur py-5 px-5 rounded text-white">
                 <Form.Row>
-                    <Form.Group as={Col} sm="8">
+                    <Form.Group as={Col} sm="12">
                         <Form.Row>
-                            <h2 className="text-dark">Signup now!</h2>
+                            <h2 className="text-white">Signup now!</h2>
                         </Form.Row>
                         <Form.Row>
-                            <h5 className="text-muted font-weight-light">Fill the form below to start booking</h5>
+                            <h5 className="text-light font-weight-light">Fill the form below to start booking</h5>
                         </Form.Row>
                     </Form.Group>
                 </Form.Row>
@@ -116,9 +119,9 @@ class Register extends Component {
                                 type="password"
                                 placeholder="Password..."
                                 aria-describedby="inputGroupPrepend"
-                                value={this.state.password}
+                                value={this.state.reg_password}
                                 onChange={this.handleChange}
-                                name="password"
+                                name="reg_password"
                                 required
                             />
                             <Form.Control.Feedback type="invalid">

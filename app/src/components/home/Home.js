@@ -31,7 +31,7 @@ class Home extends Component {
             <div className="main-bg">
                 <Header />
                 <Container className="cm-top" fluid={true}>
-                    <Row noGutters={true} className="justify-content-between">
+                    <Row noGutters={true} className="justify-content-around">
                         <Col sm="6">
                             <Row>
                                 <Col sm={{span: 8, offset: 2}}>
@@ -61,13 +61,13 @@ class Home extends Component {
                             <Row className="elm-top">
                                 <Col sm={{span: 10, offset: 1}}>
                                     <Row className="justify-content-center">
-                                        <Button className="py-2 px-5" onClick={this.handleSwap}>Register</Button>
+                                        <Button className="py-2 px-5" onClick={this.handleSwap}>Start now</Button>
                                     </Row>
                                 </Col>
                             </Row>
 
                         </Col>
-                        <Col sm="5">
+                        <Col md="4">
                             { swapForms }
                         </Col>
                     </Row>
