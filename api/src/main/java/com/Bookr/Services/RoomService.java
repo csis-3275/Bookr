@@ -30,10 +30,4 @@ public class RoomService {
 	public Room getById(Integer id) {
 		return roomRepository.getById(id);
 	}
-	
-	public void delete(Integer id)
-	{
-		Room selected_room = getById(id);
-		roomRepository.delete(selected_room);
-	}
 }
