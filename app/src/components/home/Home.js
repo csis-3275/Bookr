@@ -4,32 +4,29 @@ import classnames from 'classnames';
 import Header from '../partials/Header';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import Login from '../login/Login';
+import Register from '../register/Register';
 
 
 class Home extends Component {
     constructor(props) {
         super(props);
+
+        this.handleSwap= this.handleSwap.bind(this);
+
         this.state = { 
-            username: "", 
-            password: ""
+            is_login_form: true
          };
     }
 
-    handleChange(e){
+    handleSwap = () => {
         this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
-
-    handleSubmit(e){
-        e.preventDefault();
-        const user = {
-            username: this.state.username, 
-            password: this.state.password 
-        };
+            is_login_form: !this.state.is_login_form
+        })
     }
 
     render() { 
+        const swapForms = this.state.is_login_form ? <Login /> : <Register />;
+
         return ( 
             <div className="main-bg">
                 <Header />
@@ -64,14 +61,14 @@ class Home extends Component {
                             <Row className="elm-top">
                                 <Col sm={{span: 10, offset: 1}}>
                                     <Row className="justify-content-center">
-                                        <Button className="py-2 px-5">Register</Button>
+                                        <Button className="py-2 px-5" onClick={this.handleSwap}>Register</Button>
                                     </Row>
                                 </Col>
                             </Row>
 
                         </Col>
                         <Col sm="5">
-                            <Login />
+                            { swapForms }
                         </Col>
                     </Row>
                 </Container>

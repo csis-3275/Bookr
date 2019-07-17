@@ -27,20 +27,3 @@ export const createNewUser = (new_user, history) => async dispatch => {
         });        
     }
 }
-
-export const getGroceryItems = () => async dispatch => {
-    try{
-        await axios.get("http://localhost:8181/api/grocerylist")
-                .then(res => dispatch({
-                    type: GET_ITEMS, 
-                    payload: res.data
-                }));
-    }
-    catch(err)
-    {
-        dispatch({
-            type: GET_ERRORS, 
-            payload: err.response.data
-        });   
-    }
-}
