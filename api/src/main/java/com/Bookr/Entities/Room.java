@@ -4,23 +4,12 @@
 package com.Bookr.Entities;
 
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 /**
@@ -32,45 +21,26 @@ import javax.persistence.Column;
 @Table(name="rooms")
 public class Room {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
+	@GeneratedValue
+	@Column(name="id")
+	private Integer _id;
 	
 	@Column(name="type")
 	private String _type;
 	
-	@NotNull
 	@Column(name="room_number")
 	private Integer _room_number;
 	
-	@NotNull
 	@Column(name="max_capacity")
 	private Integer _maximum_capacity;
 	
-	@NotEmpty
 	@Column(name="availability")
 	private String _availability;
-	
-	@OneToMany(targetEntity=Reservation.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@NotNull
-	@JsonIgnore
-	@JoinColumn(name="room_id", referencedColumnName="id")
-	private List<Reservation> _reservations;
 	
 	public Room() {
 		
 	}
-	
-	public void add_reservations(Reservation reserve)
-	{
-		this._reservations.add(reserve);
-	}
-	
-	public Object[] get_reservations()
-	{
-		return this._reservations.toArray();
-	}
-	
+
 	public String get_type() {
 		return _type;
 	}
@@ -104,6 +74,6 @@ public class Room {
 	}
 
 	public Integer get_id() {
-		return id;
+		return _id;
 	}
 }
