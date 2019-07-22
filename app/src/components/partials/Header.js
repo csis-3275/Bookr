@@ -4,10 +4,10 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
-    render() { 
-        return ( 
+    render() {
+        return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Navbar.Brand href="/">Bookr.com</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -15,6 +15,7 @@ class Header extends Component {
                     <Nav className="mr-auto">
                         <Nav.Link href="#features">Features</Nav.Link>
                         <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link href="#reservations">Reservations</Nav.Link>
                         <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -31,8 +32,8 @@ class Header extends Component {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-         );
+        );
     }
 }
- 
+
 export default Header;

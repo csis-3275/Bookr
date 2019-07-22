@@ -31,3 +31,9 @@
     transform: rotate(360deg);
   }
 }
+
+.d-flex div{
+  padding: 1rem;
+  color: black;
+  text-align: center;
+}
