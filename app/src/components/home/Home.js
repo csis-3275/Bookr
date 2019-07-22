@@ -5,7 +5,7 @@ import Header from '../partials/Header';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import Login from '../login/Login';
 import Reservation from '../reservation/Reservation';
-
+import { BrowserRouter, Route } from "react-router-dom";
 
 class Home extends Component {
     constructor(props) {

@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
-
+import { Column, Row } from "simple-flexbox";
+import '../reservation/reservation.css';
 
 
 export default class Reservation extends Component {
     render() {
         return (
-            <div class="bg-light py-5 px-5 rounded" >
+            <div >
                 <div className="d-flex flex-column">
-                    <h4 className="text-dark">Reservations</h4>
-                    <span className="p-2 text-dark">Flex item 1</span>
-                    <span className="p-2 text-dark">Flex item 2</span>
-                    <span className="p-2 text-dark">Flex item 3</span>
-                    <span className="p-2 text-dark">Flex item 4</span>
-                    <span className="p-2 text-dark">Flex item 5</span>
-                    <span className="p-2 text-dark">Flex item 6</span>
+                    <div className="p-2">Reservations</div>
+                </div>
+                <div className="d-flex2 flex-column">
+                    <div className="p-2">
+                        <span>Flex item 1</span>
+                        <span>Date</span>
+                        <span>Room</span>
+                    </div>
+                    <div className="p-2">Flex item 2</div>
+                    <div className="p-2">Flex item 3</div>
+                    <div className="p-2">Flex item 4</div>
+                    <div className="p-2">Flex item 5</div>
+                    <div className="p-2">Flex item 6</div>
                 </div>
             </div>
         )
