@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Header from '../partials/Header';
 import '../home/styles/styles.css';
+import './styles/styles.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import Messages from './Messages';
 
 class Support extends Component {
   render() {
@@ -11,9 +13,9 @@ class Support extends Component {
         <Container className="cm-top" fluid={true}>
           <Row noGutters={true} className="justify-content-around">
 
-            <Col sm="6" className="bg-white py-5 px-2">
+            <Col sm="7" className="bg-white py-5 ">
               <Row>
-                <Col sm={{ span: 8, offset: 1 }}>
+                <Col sm={{ span: 10, offset: 1 }}>
                   <Row className="justify-content-start">
                     <h3 className="text-dark">DashBoard</h3>
                   </Row>
@@ -30,18 +32,27 @@ class Support extends Component {
 
               <Row>
                 <Col sm={{span: 10, offset: 1}}>
-                    <Row className="justify-content-end">
+                    <Row className="justify-content-end elm-top">
                       <p className="text-secondary">- The Team</p>
                     </Row>
                 </Col>
               </Row>
 
             </Col>
-            <Col sm="3" className="bg-white">
-              <Row className="justify-content-start">
-                    <h4 className="text-dark">Reservations</h4>
+
+            <Col sm="2">
+              <Row className="theme-bg-color">
+                <Col sm={{ span: 8, offset: 1 }}>
+                  <Row className="justify-content-start mt-2">
+                    <h4 className="text-white">Reservations</h4>
+                  </Row>
+                </Col>
+              </Row>
+              <Row className="bg-white">
+                <Messages />
               </Row>
             </Col>
+
           </Row>
         </Container>
       </div>
