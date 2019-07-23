@@ -5,7 +5,7 @@ import Header from '../partials/Header';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import Login from '../login/Login';
 import Reservation from '../reservation/Reservation';
-import { BrowserRouter, Route } from "react-router-dom";
+import Profile from '../profile/Profile';
 
 class Home extends Component {
     constructor(props) {
@@ -72,7 +72,7 @@ class Home extends Component {
 
                         </Col>
                         <Col sm="5">
-                            <Reservation />
+                            <Profile />
                         </Col>
                     </Row>
                 </Container>

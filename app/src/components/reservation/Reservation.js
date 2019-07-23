@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Column, Row } from "simple-flexbox";
-import '../reservation/reservation.css';
+import '../home/styles/styles.css';
 
-
-export default class Reservation extends Component {
+class Reservation extends Component {
     render() {
         return (
             <div >
@@ -23,6 +22,9 @@ export default class Reservation extends Component {
                     <div className="p-2">Flex item 6</div>
                 </div>
             </div>
+
         )
     }
 }
+
+export default Reservation

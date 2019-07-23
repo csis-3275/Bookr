@@ -1,3 +1,25 @@
+
+.d-flex div{
+    padding: 1rem;
+    background-color: #36809b;
+    border: 1px solid black;
+    color: black;
+    text-align: left;
+  }
+
+  .d-flex2 div{
+    padding: 1rem;
+    background-color:white;
+    border: 1px solid black;
+    color: black;
+    text-align: left;
+  }
+
+  span:after{
+    content: '\a' ; 
+    white-space: pre;  
+   }
+
 .main-bg{
     background-image: url("./img/banner01.jpg");
     height: 100vh;
@@ -11,3 +33,4 @@
 .elm-top{
     margin-top: 5%;
 }
+
