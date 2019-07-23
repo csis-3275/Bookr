@@ -41,15 +41,20 @@ class Support extends Component {
             </Col>
 
             <Col sm="2">
-              <Row className="theme-bg-color">
-                <Col sm={{ span: 8, offset: 1 }}>
-                  <Row className="justify-content-start mt-2">
-                    <h4 className="text-white">Reservations</h4>
+              <Row className="theme-bg-color shadow-below">
+                <Col sm={{ span: 8, offset: 1 }} className="">
+                  <Row className="justify-content-start my-2">
+                    <h4 className="text-white">Messages</h4>
                   </Row>
                 </Col>
               </Row>
               <Row className="bg-white">
-                <Messages />
+                <Col sm={{ span: 11, offset: 1 }} className="px-0">
+                  <Messages className=""/>
+                  <Messages />
+                  <Messages />
+                  <Messages />
+                </Col>
               </Row>
             </Col>
 
