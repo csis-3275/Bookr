@@ -4,11 +4,12 @@ import '../home/styles/styles.css';
 import './styles/styles.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import Messages from './Messages';
+import ReserveUpdateForm from './update/ReserveUpdateForm';
 
 class Support extends Component {
   render() {
     return (
-      <div className="main-bg" fluid={true}>
+      <div className="main-bg" fluid={true} >
         <Header />
         <Container className="cm-top" fluid={true}>
           <Row noGutters={true} className="justify-content-around">
@@ -56,7 +57,10 @@ class Support extends Component {
             </Col>
 
           </Row>
-        </Container>
+        </Container> */}
+
+        {/* <ReserveUpdateForm />
+
       </div>
     );
   }
