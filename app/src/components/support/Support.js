@@ -50,10 +50,7 @@ class Support extends Component {
               </Row>
               <Row className="bg-white">
                 <Col sm={{ span: 11, offset: 1 }} className="px-0">
-                  <Messages className=""/>
-                  <Messages />
-                  <Messages />
-                  <Messages />
+                  <Messages/>
                 </Col>
               </Row>
             </Col>
