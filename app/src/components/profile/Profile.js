@@ -41,12 +41,14 @@ class Profile extends Component {
                                         onChange={e => this.change(e)}
                                     />
                                     <br />
+                                    <br />
                                     <input
                                         name="lastName"
                                         placeholder="Last Name"
                                         value={this.state.lastName}
                                         onChange={e => this.change(e)}
                                     />
+                                    <br />
                                     <br />
                                     <input
                                         name="email"
@@ -55,12 +57,14 @@ class Profile extends Component {
                                         onChange={e => this.change(e)}
                                     />
                                     <br />
+                                    <br />
                                     <input
                                         name="phone"
                                         placeholder="Phone Number"
                                         value={this.state.phone}
                                         onChange={e => this.change(e)}
                                     />
+                                    <br />
                                     <br />
                                     <input
                                         name="password"
@@ -69,6 +73,7 @@ class Profile extends Component {
                                         value={this.state.password}
                                         onChange={e => this.change(e)}
                                     />
+                                    <br />
                                     <br />
                                     <button onClick={e => this.onSubmit(e)}>Update</button>
                                 </form>
