@@ -60,6 +60,7 @@ public class User {
 	private String _password;
 	
 	
+	
 	/**
 	 * @return the _role_id
 	 */
