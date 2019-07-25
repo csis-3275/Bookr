@@ -12,7 +12,7 @@ import {
 
 export const createNewUser = (new_user, history) => async dispatch => {
     try {
-        await axios.post("http://localhost:8181/api/users/add", new_user);
+        await axios.post("http://localhost:8888/api/users/create_user", new_user);
         history.push("/");
 
         dispatch({
