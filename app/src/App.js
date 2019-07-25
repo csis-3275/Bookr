@@ -5,6 +5,7 @@ import './App.css';
 import Home from "./components/home/Home";
 import Reservation from './components/reservation/Reservation';
 import Profile from './components/profile/Profile';
+import Schedule from './components/schedule/Schedule';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/reservation" component={Reservation} />
-          <Route path="/profile" component={Profile} />>
+          <Route path="/profile" component={Profile} />
+          <Route path="/schedule" component={Schedule} />
         </Switch>
       </BrowserRouter>
     </div>
