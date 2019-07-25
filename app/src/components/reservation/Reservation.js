@@ -8,9 +8,9 @@ import ReservationList from './ReservationList';
 class Reservation extends Component {
     render() {
         return (
-            <div className="main-bg" fluid={true}>
+            <div className="main-bg">
                 <Header />
-                <Container className="cm-top" fluid={true}>
+                <Container className="cm-top">
                     <Row noGutters={true} className="justify-content-around">
 
                         <Col sm="7" className="bg-white py-5 ">

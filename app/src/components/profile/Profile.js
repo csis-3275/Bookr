@@ -5,13 +5,16 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 class Profile extends Component {
 
-    state = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        password: "",
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            password: "",
+        };
+    }
 
     change = e => {
         this.setState({
@@ -26,9 +29,9 @@ class Profile extends Component {
 
     render() {
         return (
-            <div div className="main-bg" fluid={true}>
+            <div className="main-bg">
                 <Header />
-                <Container className="cm-top" fluid={true}>
+                <Container className="cm-top">
                     <Row className="elm-top">
                         <Col sm={{ span: 10, offset: 1 }}>
                             <Row className="justify-content-center">
