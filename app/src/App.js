@@ -6,6 +6,7 @@ import Home from "./components/home/Home";
 import Dashboard from "./components/dashboard/Dashboard";
 import { Provider } from 'react-redux';
 import store from './store';
+import Support from "./components/support/Support"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/dashboard" component={Dashboard} />
+                <Route path="/support" component={Support}  />
             </Switch>
         </BrowserRouter>
     </Provider>
