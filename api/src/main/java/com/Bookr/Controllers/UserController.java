@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Bookr.Entities.UserRole;
+import com.Bookr.Entities.LoginDetails;
 import com.Bookr.Entities.User;
 import com.Bookr.Services.RoleService;
 import com.Bookr.Services.UserService;
@@ -57,6 +58,13 @@ public class UserController {
 	private ResponseEntity<?> getUserById(@PathVariable Integer user_id)
 	{
 		User user = userService.getById(user_id);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+	@GetMapping("/login")
+	private ResponseEntity<?> login(@RequestBody LoginDetails details)
+	{
+		User user = userService.findByEmailAndPassword(details.get_username(), details.get_password());
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	

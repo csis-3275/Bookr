@@ -27,3 +27,21 @@ export const createNewUser = (new_user, history) => async dispatch => {
         });        
     }
 }
+
+export const loginUser = (new_user, history) => async dispatch => {
+    try {
+        await axios.post("http://localhost:8888/api/users/login", new_user);
+        history.push("/");
+
+        dispatch({
+            type: USER_CREATED, 
+            payload: {}
+        });
+
+    } catch (err) {
+        dispatch({
+            type: GET_ERRORS, 
+            payload: err.response.data
+        });        
+    }
+}

@@ -3,6 +3,10 @@ import { Form, InputGroup, Button, Col } from 'react-bootstrap';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './styles/login.css';
+import { loginUser } from '../../actions/appActions';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 
 class Login extends Component {
     constructor(props) {
@@ -25,7 +29,6 @@ class Login extends Component {
         e.preventDefault();
         const user = {
             username: this.state.username, 
-            password: this.state.password 
         };
         console.log(user);
     }
@@ -96,4 +99,13 @@ class Login extends Component {
     }
 }
  
-export default Login;
+Login.propTypes = {
+    loginUser: propTypes.func.isRequired, 
+    errors: propTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, {loginUser})(Login);
