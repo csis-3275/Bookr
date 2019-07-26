@@ -3,6 +3,7 @@ import Header from '../partials/Header';
 import '../home/styles/styles.css';
 import { Container, Row, Col } from 'react-bootstrap';
 
+
 class Reschedule extends Component {
 
     constructor(props) {
@@ -42,7 +43,7 @@ class Reschedule extends Component {
                                     />
                                     <br />
                                     <br />
-                                    <input
+                                    <textarea
                                         name="message"
                                         placeholder="Enter New Schedule Info"
                                         value={this.state.message}
