@@ -6,7 +6,22 @@ import { Container, Row, Col } from 'react-bootstrap';
 import ReservationList from './ReservationList';
 
 class Reservation extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: {}
+        }
+    }
+
+    componentWillMount(){
+        this.setState({
+            user: this.props.location.state
+        })
+    }
+
     render() {
+            // const user = this.props.location.state;
+            console.log(this.state.user);
         return (
             <div className="main-bg">
                 <Header />

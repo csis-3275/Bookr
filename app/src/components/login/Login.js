@@ -39,10 +39,16 @@ class Login extends Component {
             this.setState({
                 loggedIn: true
             });
-            if(this.state.loggedIn === true)
-            {
-                this.props.history.push("/dashboard");
-            }
+        }
+    }
+
+    redirect = () => {
+        if(this.state.loggedIn === true)
+        {
+            return <Redirect to={{
+                pathname: '/reservation',
+                state: { user: localStorage.getItem("user") }
+            }}/>
         }
     }
 
@@ -107,6 +113,7 @@ class Login extends Component {
                     </Form.Group>
                 </Form.Row>
                 <Button type="submit" className="py-2 px-5">Login</Button>
+                {this.redirect()}
             </Form>
          );
     }
