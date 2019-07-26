@@ -31,8 +31,21 @@ public class UserTest {
 		assertEquals("Mclean",nu.get_lastname());
 		assertEquals("AmberM@gmail.com", nu.get_email());
 		assertEquals("password123", nu.get_password());
-		
 		assertArrayEquals(rvArr, nu.get_reservations());
+		
+		// After Value changed
+		nu.set_role_id(2);
+		nu.set_firstname("Anuar");
+		nu.set_lastname("Mukham");
+		nu.set_email("anuarM@gmail.com");
+		nu.set_password("pw123123");
+		
+		//test change
+		assertEquals(2, nu.get_role_id().intValue());
+		assertEquals("Anuar", nu.get_firstname());
+		assertEquals("Mukham",nu.get_lastname());
+		assertEquals("anuarM@gmail.com", nu.get_email());
+		assertEquals("pw123123", nu.get_password());
 	}
 
 }
