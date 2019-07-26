@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
-    render() { 
-        return ( 
+    render() {
+        return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Navbar.Brand href="/" className="text-info pl-2 font_big">Bookr</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -28,8 +27,8 @@ class Header extends Component {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-         );
+        );
     }
 }
- 
+
 export default Header;
