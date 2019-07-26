@@ -6,6 +6,7 @@ import Reservation from './components/reservation/Reservation';
 import Profile from './components/profile/Profile';
 import Schedule from './components/schedule/Schedule';
 import Reschedule from './components/schedule/Reschedule';
+import UserProfile from './components/profile/UserProfile';
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
           <Route path="/" component={Home} exact />
           <Route path="/reservation" component={Reservation} />
           <Route path="/profile" component={Profile} />
+          <Route path="/userprofile" component={UserProfile} />
           <Route path="/schedule" component={Schedule} />
-          <Route path="/reschedule" component={Reschedule} />>
+          <Route path="/reschedule" component={Reschedule} />
         </Switch>
       </BrowserRouter>
     </div>
