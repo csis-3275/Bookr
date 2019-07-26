@@ -28,12 +28,11 @@ class Home extends Component {
         const swapForms = this.state.is_login_form ? <Login /> : <Register />;
 
         return ( 
-            <div className="main-bg">
-                <Header />
-                <Container className="cm-top" fluid={true}>
+            <div className="main-bg mt-0">
+                <Container className="mt-0" fluid={true}>
                     <Row noGutters={true} className="justify-content-around">
                         <Col sm="6">
-                            <Row>
+                            <Row className="cm-top">
                                 <Col sm={{ span: 8, offset: 2 }}>
                                     <Row className="justify-content-center">
                                         <h1 className="text-center">You can book your room <span className="text-primary">now!</span></h1>

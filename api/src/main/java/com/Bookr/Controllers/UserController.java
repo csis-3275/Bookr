@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Bookr.Entities.UserRole;
+import com.Bookr.Entities.LoginDetails;
 import com.Bookr.Entities.User;
 import com.Bookr.Services.RoleService;
 import com.Bookr.Services.UserService;
@@ -34,7 +35,7 @@ import com.Bookr.Services.UserService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 public class UserController {
 	@Autowired
 	private UserService userService;
@@ -52,14 +53,19 @@ public class UserController {
 		return roleService.findAllRoles();
 	}
 	
+	@PostMapping("/login")
+	private ResponseEntity<?> login(@Valid @RequestBody LoginDetails details)
+	{
+		User user = userService.findByEmailAndPassword(details.get_username(), details.get_password());
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
 	
 	@GetMapping("/{user_id}")
 	private ResponseEntity<?> getUserById(@PathVariable Integer user_id)
 	{
 		User user = userService.getById(user_id);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
-	}
-	
+	}	
 	
 	@PostMapping("/create_user")
 	private ResponseEntity<?> createNewUser(@Valid @RequestBody User user) 
