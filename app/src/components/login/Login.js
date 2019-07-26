@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, InputGroup, Button, Col } from 'react-bootstrap';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './styles/login.css';
 
 class Login extends Component {
     constructor(props) {
@@ -34,18 +35,15 @@ class Login extends Component {
 
         return ( 
             // <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form noValidate className="bg-light py-5 px-5 rounded" onSubmit={this.handleSubmit}>
+            <Form noValidate className="bg-glass-blur py-5 px-5 rounded text-white" onSubmit={this.handleSubmit}>
                 <Form.Row>
-                    <Form.Group as={Col} sm="7">
+                    <Form.Group as={Col} sm="12">
                         <Form.Row>
-                            <h2 className="text-dark">Login now!</h2>
+                            <h2 className="text-white">Login now!</h2>
                         </Form.Row>
                         <Form.Row>
-                            <h5 className="text-muted font-weight-light">Fill the form below to gain access</h5>
+                            <h5 className="text-light font-weight-light">Fill the form below to gain access</h5>
                         </Form.Row>
-                    </Form.Group>
-                    <Form.Group as={Col} sm="5">
-                        <FontAwesomeIcon icon={faUser} />
                     </Form.Group>
                 </Form.Row>
                 <Form.Row>

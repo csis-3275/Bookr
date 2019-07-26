@@ -3,6 +3,7 @@
  */
 package com.Bookr.Entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class User {
 	@OneToMany(targetEntity=Reservation.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name="user_id", referencedColumnName="id")
-	private List<Reservation> _reservations;
+	private List<Reservation> _reservations = new ArrayList<Reservation>();
 	
 	@Column(name="role_id")
 	@NotNull
@@ -56,9 +57,46 @@ public class User {
 	private String _email;
 	
 	@Column(name="password")
+	@NotBlank(message="password cannot be blank")
+	private String _password;
 	
 	
 	
+	/**
+	 * @return the _role_id
+	 */
+	public Integer get_role_id() {
+		return _role_id;
+	}
+
+	/**
+	 * @param _role_id the _role_id to set
+	 */
+	public void set_role_id(Integer _role_id) {
+		this._role_id = _role_id;
+	}
+
+	/**
+	 * @return the _password
+	 */
+	public String get_password() {
+		return _password;
+	}
+
+	/**
+	 * @param _password the _password to set
+	 */
+	public void set_password(String _password) {
+		this._password = _password;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	/**
 	 * @void add new reservation to _reservations
 	 * @param reserve
@@ -77,20 +115,6 @@ public class User {
 	public Object[] get_reservations()
 	{
 		return this._reservations.toArray();
-	}
-	
-	/**
-	 * @return the _role
-	 */
-	public Integer get_role() {
-		return _role_id;
-	}
-
-	/**
-	 * @param _role the _role to set
-	 */
-	public void set_role(Integer _role_id) {
-		this._role_id = _role_id;
 	}
 
 	/**
