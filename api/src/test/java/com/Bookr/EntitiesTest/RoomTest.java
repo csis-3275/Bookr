@@ -43,6 +43,24 @@ public class RoomTest {
 		assertEquals(50, nr.get_maximum_capacity().intValue());
 		assertEquals("available", nr.get_availability());
 		assertArrayEquals(reservList.toArray(), nr.get_reservations());
+		
+		// state changes
+		nr.set_type("workspace");
+		nr.set_room_number(200);
+		nr.set_maximum_capacity(5);
+		nr.set_availability("notavailable");
+		
+		Reservation resv2 = new Reservation();
+		reservList.add(resv2);
+		nr.add_reservations(resv2); 
+
+
+		//Test
+		assertEquals("workspace", nr.get_type());
+		assertEquals(200, nr.get_room_number().intValue());
+		assertEquals(5, nr.get_maximum_capacity().intValue());
+		assertEquals("notavailable", nr.get_availability());
+		assertArrayEquals(reservList.toArray(), nr.get_reservations());
 
 		
 	}
