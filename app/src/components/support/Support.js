@@ -4,13 +4,14 @@ import '../home/styles/styles.css';
 import './styles/styles.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import Messages from './Messages';
+import ReserveUpdateForm from './update/ReserveUpdateForm';
 
 class Support extends Component {
   render() {
     return (
-      <div className="main-bg" fluid={true}>
+      <div className="main-bg" fluid={true} >
         <Header />
-        <Container className="cm-top" fluid={true}>
+        {/* <Container className="cm-top" fluid={true}>
           <Row noGutters={true} className="justify-content-around">
 
             <Col sm="7" className="bg-white py-5 ">
@@ -40,23 +41,26 @@ class Support extends Component {
 
             </Col>
 
-            <Col sm="2">
-              <Row className="theme-bg-color shadow-below">
+            <Col sm="2" className="bg-white">
+              <Row className="theme-bg-color shadow">
                 <Col sm={{ span: 8, offset: 1 }} className="">
                   <Row className="justify-content-start my-2">
                     <h4 className="text-white">Messages</h4>
                   </Row>
                 </Col>
               </Row>
-              <Row className="bg-white">
-                <Col sm={{ span: 11, offset: 1 }} className="px-0">
+              <Row>
+                <Col sm={{ span: 12, offset: 1 }} className="px-0">
                   <Messages/>
                 </Col>
               </Row>
             </Col>
 
           </Row>
-        </Container>
+        </Container> */}
+
+        <ReserveUpdateForm />
+
       </div>
     );
   }

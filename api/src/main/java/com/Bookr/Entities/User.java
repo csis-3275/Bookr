@@ -3,6 +3,7 @@
  */
 package com.Bookr.Entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Ayodeji Tolu-ojo 300249754
- *
+ * Gahyun Lee 300289068 Modified
  */
 
 @Entity
@@ -37,7 +38,7 @@ public class User {
 	@OneToMany(targetEntity=Reservation.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name="user_id", referencedColumnName="id")
-	private List<Reservation> _reservations;
+	private List<Reservation> _reservations = new ArrayList<Reservation>();
 	
 	@Column(name="role_id")
 	@NotNull
@@ -114,20 +115,6 @@ public class User {
 	public Object[] get_reservations()
 	{
 		return this._reservations.toArray();
-	}
-	
-	/**
-	 * @return the _role
-	 */
-	public Integer get_role() {
-		return _role_id;
-	}
-
-	/**
-	 * @param _role the _role to set
-	 */
-	public void set_role(Integer _role_id) {
-		this._role_id = _role_id;
 	}
 
 	/**
