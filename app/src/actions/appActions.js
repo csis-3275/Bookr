@@ -28,20 +28,30 @@ export const createNewUser = (new_user, history) => async dispatch => {
     }
 }
 
-export const loginUser = (new_user, history) => async dispatch => {
+export const loginUser = (login_details, history) => async dispatch => {
     try {
-        await axios.post("http://localhost:8888/api/users/login", new_user);
-        history.push("/");
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(login_details)
+        };
 
-        dispatch({
-            type: USER_CREATED, 
-            payload: {}
-        });
+        const response  = await axios.post("http://localhost:8888/api/users/login", login_details);
+        
+
+        if(response.data !== null)
+        {
+            dispatch({
+                type: USER_LOGGED_IN, 
+                payload: response.data
+            })
+            .then(localStorage.setItem('user', JSON.stringify(response.data)))
+        }
+
 
     } catch (err) {
-        dispatch({
-            type: GET_ERRORS, 
-            payload: err.response.data
-        });        
+            
+
+        
     }
 }

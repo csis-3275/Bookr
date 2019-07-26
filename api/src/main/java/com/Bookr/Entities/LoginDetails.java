@@ -4,7 +4,7 @@
 package com.Bookr.Entities;
 
 /**
- * @author lowbl
+ * @author Ayodeji Tolu-ojo 300249754
  *
  */
 public class LoginDetails {

@@ -15,8 +15,10 @@ import com.Bookr.Entities.User;
  */
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-	public User getById(Integer Id);
-	
 	@Query(value = "SELECT * FROM users WHERE email = ?1 AND password = ?2", nativeQuery = true)
 	public User findByEmailAddressAndPassword(String email, String password);
+	
+	
+	public User getById(Integer Id);
+	
 }

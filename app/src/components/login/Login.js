@@ -6,6 +6,7 @@ import './styles/login.css';
 import { loginUser } from '../../actions/appActions';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -15,7 +16,8 @@ class Login extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.state = { 
             username: "", 
-            password: ""
+            password: "", 
+            loggedIn: false
          }
     }
 
@@ -28,9 +30,20 @@ class Login extends Component {
     handleSubmit(e){
         e.preventDefault();
         const user = {
-            username: this.state.username, 
+            _username: this.state.username, 
+            _password: this.state.password 
         };
         console.log(user);
+        if(this.props.loginUser(user, this.props.history))
+        {
+            this.setState({
+                loggedIn: true
+            });
+            if(this.state.loggedIn === true)
+            {
+                this.props.history.push("/dashboard");
+            }
+        }
     }
 
     render() { 
