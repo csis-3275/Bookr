@@ -46,7 +46,7 @@ class Register extends Component {
 
         return ( 
             // <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form noValidate onSubmit={this.handleSubmit} className="bg-glass-blur py-5 px-5 rounded text-white">
+            <Form noValidate onSubmit={this.handleSubmit} className="bg-glass-blur py-5 px-5 rounded text-white cm-top">
                 <Form.Row>
                     <Form.Group as={Col} sm="12">
                         <Form.Row>
