@@ -38,6 +38,7 @@ public class ReservationTest {
 
 		nr.set_res_number("123456");
 		
+		//Test
 		assertEquals(1, nr.get_room_id().intValue());
 		assertEquals(1, nr.get_user_id().intValue());
 		
@@ -46,6 +47,31 @@ public class ReservationTest {
 		assertEquals(dateFormat.format(date2), nr.get_end_date());
 
 		assertEquals("123456", nr.get_res_number());
+		
+		// Status Change
+		nr.set_room_id(3);
+		nr.set_user_id(10);
+		
+		cal2.set(2019, Calendar.JUNE, 30, 11, 10, 20);
+		Date date3 = cal2.getTime();
+		nr.set_end_date(date3);
+        nr.set_start_date(date3);
+        
+		cal.set(2019, Calendar.JULY, 10, 01, 10, 20);
+		Date date4 = cal.getTime();
+		nr.set_end_date(date4);
+        nr.set_end_date(date4);
+
+		nr.set_res_number("201906301");
+
+		//Test
+		assertEquals(3, nr.get_room_id().intValue());
+		assertEquals(10, nr.get_user_id().intValue());
+		
+		assertEquals("2019-06-30 11:10:20", nr.get_start_date());
+		assertEquals("2019-07-10 01:10:20", nr.get_end_date());
+
+		assertEquals("201906301", nr.get_res_number());
 		
 	}
 }
