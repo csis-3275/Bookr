@@ -32,8 +32,8 @@ public class ReservationTest {
          
         // Setting end date
 		 Calendar cal2 = Calendar.getInstance();
-		 cal.set(2019, Calendar.JULY, 26, 10, 10, 20);
-		 Date date2 = cal.getTime();
+		 cal2.set(2019, Calendar.JULY, 26, 10, 10, 20);
+		 Date date2 = cal2.getTime();
 		 nr.set_end_date(date2);
 
 		nr.set_res_number("123456");
