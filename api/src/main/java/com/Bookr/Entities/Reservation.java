@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Ayodeji Tolu-ojo 300249754
- *
+ * Gahyun Lee 300289068 Modified
  */
 
 @Entity

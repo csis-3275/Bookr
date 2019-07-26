@@ -7,6 +7,10 @@ import org.junit.Test;
 import com.Bookr.Entities.Reservation;
 import com.Bookr.Entities.User;
 
+/**
+ * @author Gahyun Lee 300289068
+ *
+ */
 public class UserTest {
 
 	@Test
