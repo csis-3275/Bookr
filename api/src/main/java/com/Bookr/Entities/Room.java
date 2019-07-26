@@ -55,7 +55,7 @@ public class Room {
 	@NotNull
 	@JsonIgnore
 	@JoinColumn(name="room_id", referencedColumnName="id")
-	private List<Reservation> _reservations;
+	private List<Reservation> _reservations = new ArrayList<>();
 	
 	public Room() {
 		
