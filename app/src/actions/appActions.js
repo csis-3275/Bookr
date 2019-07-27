@@ -21,10 +21,10 @@ export const createNewUser = (new_user, history) => async dispatch => {
         });
 
     } catch (err) {
-        dispatch({
-            type: GET_ERRORS, 
-            payload: err.response.data
-        });        
+        // dispatch({
+        //     type: GET_ERRORS, 
+        //     payload: err
+        // });        
     }
 }
 

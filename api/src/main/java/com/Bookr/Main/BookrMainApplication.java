@@ -31,8 +31,20 @@ public class BookrMainApplication {
 	      return new WebMvcConfigurer() {
 	         @Override
 	         public void addCorsMappings(CorsRegistry registry) {
-	            registry.addMapping("/api/users").allowedOrigins("http://localhost:3000");
-	            registry.addMapping("/api/users/login").allowedOrigins("http://localhost:3000");
+	            registry.addMapping("/api/users").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/users/all").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/users/all_roles").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/users/{user_id}").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/users/create_user").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/users/login").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/users/delete/{user_id}").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/reservations").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/reservations/all").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/reservations/{reservation_id}").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/reservations/create_reservation").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/rooms").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/rooms/all").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/rooms/{room_id}").allowedOrigins("http://localhost:8000");
 	         }
 	      };
 	   }
