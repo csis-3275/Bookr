@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Header from '../partials/Header';
+import { Container, Row, Column } from 'react-bootstrap';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -7,7 +9,14 @@ class Dashboard extends Component {
     }
     render() { 
         return ( 
-            <div>This is the dashboard!</div>
+            <div>
+                <Header />
+                <Container className="mx-0 mt-auto">
+                    <Row>
+                        <div>U</div>
+                    </Row>
+                </Container>
+            </div>
          );
     }
 }
