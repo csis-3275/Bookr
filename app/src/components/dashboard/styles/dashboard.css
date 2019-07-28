@@ -1,0 +1,25 @@
+.center-container{
+    margin: 0 auto;
+}
+
+.center-container{
+    margin-top: 5rem;
+}
+
+.circle-div{
+    width: 7rem;
+    height: 7rem;
+    line-height: 7rem;
+    text-align: center;
+    background-color: #009999;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.circle-div > span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 3rem;
+    color: white;
+  }
