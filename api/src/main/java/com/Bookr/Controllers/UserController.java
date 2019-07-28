@@ -41,20 +41,20 @@ public class UserController {
 	private RoleService roleService;
 	
 	@GetMapping("/all")
-	private Iterable<User> getAllUsers()
+	public Iterable<User> getAllUsers()
 	{
 		return userService.findAll();
 	}
 	
 	@GetMapping("/all_roles")
-	private Iterable<UserRole> getAllRoles()
+	public Iterable<UserRole> getAllRoles()
 	{
 		return roleService.findAllRoles();
 	}
 	
 	
 	@GetMapping("/{user_id}")
-	private ResponseEntity<?> getUserById(@PathVariable Integer user_id)
+	public ResponseEntity<?> getUserById(@PathVariable Integer user_id)
 	{
 		User user = userService.getById(user_id);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
@@ -62,7 +62,7 @@ public class UserController {
 	
 	
 	@PostMapping("/create_user")
-	private ResponseEntity<?> createNewUser(@Valid @RequestBody User user) 
+	public ResponseEntity<?> createNewUser(@Valid @RequestBody User user) 
 	{
 //		user.set_role(3);
 		User new_user = userService.saveOrUpdateUser(user);
