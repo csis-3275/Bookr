@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import "./styles/header.css";
 
 class Header extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Header extends Component {
 
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets" className="text-info pr-4">email@email.com</Nav.Link>
+                        <Nav.Link href="#deets" className="text-white pr-4">Welcome <span className="text-name">{this.props.firstname} {this.props.lastname}</span></Nav.Link>
                         <NavDropdown title="Dashboard" id="collasible-nav-dropdown" className="pr-5">
                             <NavDropdown.Item href="#action/3.1">Book Rooms</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Update Reservation</NavDropdown.Item>
