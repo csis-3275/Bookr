@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.Bookr.IntegrationTest;
+package com.Bookr.ControllersTest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -43,7 +43,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {UserController.class})
 @WebMvcTest(value=UserController.class)
-public class IntegrationTest {
+public class UserControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
@@ -84,36 +84,4 @@ public class IntegrationTest {
 		return objectMapper.writeValueAsString(object);
 	}
 	
-	
-////	User user;
-//	UserController uc;
-//	Reservation reserv;
-//	ReservationController rc;
-//	UserService us;
-//
-//	/**
-//	 * @throws java.lang.Exception
-//	 */
-//	@Before
-//	public void setUp() throws Exception {
-//		uc = new UserController();
-//		reserv = new Reservation();
-//		rc = new ReservationController();
-//	}
-//
-//	@Test
-//	public void CreateUsertest() {
-//		User user = new User();
-//		user.set_role_id(1);
-//		user.set_firstname("Amber");
-//		user.set_lastname("Mclean");
-//		user.set_email("email@email.com");
-//		user.set_password("passwords");
-//		
-//		System.out.println(user.get_email());
-////		us.saveOrUpdateUser(user);
-////		assertEquals(new ResponseEntity<User>(user, HttpStatus.CREATED), uc.createNewUser(user));
-//		
-//	}
-
 }
