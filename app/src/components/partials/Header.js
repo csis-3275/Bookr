@@ -50,7 +50,14 @@ class Header extends Component {
                             }}>
                                 Reservations
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="/userprofile">Manage Account</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to={{
+                                pathname: "/userprofile", 
+                                state: {
+                                    user: this.state.user
+                                }
+                            }}>
+                                Manage Account
+                            </NavDropdown.Item>
                             <NavDropdown.Item href="/contact_support">Contact Support</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/">Logout</NavDropdown.Item>
