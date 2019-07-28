@@ -15,16 +15,21 @@ class Reservation extends Component {
 
     componentWillMount(){
         this.setState({
-            user: this.props.location.state
+            user: this.props.location.state.user
         })
     }
 
     render() {
             // const user = this.props.location.state;
             console.log(this.state.user);
+            console.log(typeof this.state.user);
+
+            const user = JSON.parse(this.state.user);
+            
+
         return (
             <div className="main-bg">
-                <Header />
+                <Header firstname={user._firstname} lastname={user._lastname} />
                 <Container className="cm-top">
                     <Row noGutters={true} className="justify-content-around">
 

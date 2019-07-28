@@ -22,7 +22,7 @@ import com.Bookr.Services.RoomService;
 
 @RestController
 @RequestMapping("/api/rooms")
-@CrossOrigin
+@CrossOrigin("http://localhost:8000")
 public class RoomController {
 	@Autowired
 	

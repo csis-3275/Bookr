@@ -35,7 +35,7 @@ import com.Bookr.Services.UserService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:8000")
 public class UserController {
 	@Autowired
 	private UserService userService;
