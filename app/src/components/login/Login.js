@@ -46,8 +46,8 @@ class Login extends Component {
         if(this.state.loggedIn === true)
         {
             return <Redirect to={{
-                pathname: '/reservation',
-                state: { user: localStorage.getItem("user") }
+                pathname: '/dashboard',
+                state: { user: JSON.parse(localStorage.getItem("user")) }
             }}/>
         }
     }

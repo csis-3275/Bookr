@@ -8,12 +8,27 @@ class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: {}, 
+            id: 0, 
             firstName: "",
             lastName: "",
             email: "",
             phone: "",
             password: "",
+            role_id: 0
         };
+    }
+
+    componentWillMount(){
+        this.setState({
+            user: this.props.location.state.user, 
+            id: this.props.location.state.user.id, 
+            firstName: this.props.location.state.user._firstname, 
+            lastName: this.props.location.state.user._lastname, 
+            email: this.props.location.state.user._email, 
+            password: this.props.location.state.user._password, 
+            role_id: this.props.location.state.user._role_id
+        })
     }
 
     change = e => {
@@ -30,7 +45,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div className="main-bg">
-                <Header />
+                <Header user={this.state.user} />
                 <Container className="cm-top">
                     <Row className="elm-top">
                         <Col sm={{ span: 10, offset: 1 }}>
@@ -57,14 +72,6 @@ class UserProfile extends Component {
                                         name="email"
                                         placeholder="Email"
                                         value={this.state.email}
-                                        onChange={e => this.change(e)}
-                                    />
-                                    <br />
-                                    <br />
-                                    <input
-                                        name="phone"
-                                        placeholder="Phone Number"
-                                        value={this.state.phone}
                                         onChange={e => this.change(e)}
                                     />
                                     <br />

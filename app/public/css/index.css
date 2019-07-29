@@ -1,0 +1,12 @@
+.bg-blurred {
+    background-image: url('./img/bg_blurred.png');
+    background-attachment: fixed;
+    background-origin: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+html, body, #root, #root>div {
+    height: 100%
+  }
