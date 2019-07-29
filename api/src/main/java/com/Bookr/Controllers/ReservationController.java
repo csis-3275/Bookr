@@ -33,20 +33,20 @@ public class ReservationController {
 	private ReservationService reservationService;
 	
 	@PostMapping("/create_reservation")
-	private ResponseEntity<?> createNewReservation(@Valid @RequestBody Reservation reservation) 
+	public ResponseEntity<?> createNewReservation(@Valid @RequestBody Reservation reservation) 
 	{
 		Reservation new_reservation = reservationService.saveOrUpdateReservation(reservation);
 		return new ResponseEntity<Reservation>(new_reservation, HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/all")
-	private Iterable<Reservation> getAllReservations()
+	public Iterable<Reservation> getAllReservations()
 	{
 		return reservationService.findAll();
 	}
 	
 	@GetMapping("/{reservation_id}")
-	private ResponseEntity<?> getReservationById(@PathVariable Integer reservation_id)
+	public ResponseEntity<?> getReservationById(@PathVariable Integer reservation_id)
 	{
 		Reservation reservation = reservationService.getById(reservation_id);
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
