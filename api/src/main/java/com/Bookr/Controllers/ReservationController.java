@@ -27,7 +27,7 @@ import com.Bookr.Services.UserService;
 
 @RestController
 @RequestMapping("/api/reservations")
-@CrossOrigin
+@CrossOrigin("http://localhost:8000")
 public class ReservationController {
 	@Autowired
 	private ReservationService reservationService;

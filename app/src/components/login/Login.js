@@ -3,6 +3,11 @@ import { Form, InputGroup, Button, Col } from 'react-bootstrap';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './styles/login.css';
+import { loginUser } from '../../actions/appActions';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
 
 class Login extends Component {
     constructor(props) {
@@ -11,7 +16,8 @@ class Login extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.state = { 
             username: "", 
-            password: ""
+            password: "", 
+            loggedIn: false
          }
     }
 
@@ -24,10 +30,26 @@ class Login extends Component {
     handleSubmit(e){
         e.preventDefault();
         const user = {
-            username: this.state.username, 
-            password: this.state.password 
+            _username: this.state.username, 
+            _password: this.state.password 
         };
         console.log(user);
+        if(this.props.loginUser(user, this.props.history))
+        {
+            this.setState({
+                loggedIn: true
+            });
+        }
+    }
+
+    redirect = () => {
+        if(this.state.loggedIn === true)
+        {
+            return <Redirect to={{
+                pathname: '/dashboard',
+                state: { user: JSON.parse(localStorage.getItem("user")) }
+            }}/>
+        }
     }
 
     render() { 
@@ -35,7 +57,7 @@ class Login extends Component {
 
         return ( 
             // <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form noValidate className="bg-glass-blur py-5 px-5 rounded text-white" onSubmit={this.handleSubmit}>
+            <Form noValidate className="bg-glass-blur py-5 px-5 rounded text-white cm-top" onSubmit={this.handleSubmit}>
                 <Form.Row>
                     <Form.Group as={Col} sm="12">
                         <Form.Row>
@@ -91,9 +113,19 @@ class Login extends Component {
                     </Form.Group>
                 </Form.Row>
                 <Button type="submit" className="py-2 px-5">Login</Button>
+                {this.redirect()}
             </Form>
          );
     }
 }
  
-export default Login;
+Login.propTypes = {
+    loginUser: propTypes.func.isRequired, 
+    errors: propTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, {loginUser})(Login);

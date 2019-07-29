@@ -35,4 +35,9 @@ public class UserService {
 		User user = getById(id);
 		userRepository.delete(user);
 	}
+	
+	public User findByEmailAndPassword(String emailAddress, String password)
+	{
+		return userRepository.findByEmailAddressAndPassword(emailAddress, password);
+	}
 }
