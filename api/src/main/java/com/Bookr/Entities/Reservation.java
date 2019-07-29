@@ -20,7 +20,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.Bookr.Utilities.DateAndTimeDeserialize;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * @author Ayodeji Tolu-ojo 300249754
@@ -89,6 +92,7 @@ public class Reservation {
 	/**
 	 * @return the _start_date
 	 */
+	@JsonDeserialize(using = DateAndTimeDeserialize.class)
 	public String get_start_date() {
 		return _start_date;
 	}
@@ -103,6 +107,7 @@ public class Reservation {
 	/**
 	 * @return the _end_date
 	 */
+	@JsonDeserialize(using = DateAndTimeDeserialize.class)
 	public String get_end_date() {
 		return _end_date;
 	}
