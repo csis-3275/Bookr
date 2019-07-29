@@ -66,10 +66,9 @@ public class UserControllerTest {
 		
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 		MockHttpServletResponse response = result.getResponse();
-		
 		String outputInJson = response.getContentAsString();
 		
-		assertEquals(outputInJson, inputInJson);
+		assertEquals(inputInJson, outputInJson);
 		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
 	}
 
