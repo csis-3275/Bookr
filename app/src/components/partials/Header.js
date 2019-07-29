@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import "./styles/header.css";
 import Logo from '../img/spiral_dixed.png';
 import { NavLink } from 'react-router-dom';
+
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -60,7 +62,7 @@ class Header extends Component {
                             </NavDropdown.Item>
                             <NavDropdown.Item href="/contact_support">Contact Support</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/">Logout</NavDropdown.Item>
+                            <NavDropdown.Item as={Button} onClick="">Logout</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
