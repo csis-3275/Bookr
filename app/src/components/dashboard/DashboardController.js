@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Dashboard from "./Dashboard";
+import Header from '../partials/Header';
+import UserDashboard from "./UserDashboard";
+import SupportDashboard from "../dashboard/SupportDashboard";
 
 
 // import Footer from './footer/footer';
@@ -12,12 +14,23 @@ class DashboardController extends Component {
             user: {}
         };
     }
-    render() {
-        return (
+    componentWillMount(){
+        this.setState({
+            user: this.props.location.state.user
+        })
+    }
+
+    render() { 
+        const user = this.state.user;
+
+        const Dashboard = user._role_id === 1 || user._role_id === 2 ? <SupportDashboard user={user} /> : <UserDashboard user={this.state.user} />;
+
+        return ( 
             <div>
-                <Dashboard />
+                <Header user={user} />
+                { Dashboard }
             </div>
-        );
+         );
     }
 }
 

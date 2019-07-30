@@ -21,15 +21,24 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import javax.persistence.UniqueConstraint;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Ayodeji Tolu-ojo 300249754
- * Gahyun Lee 300289068 Modified
+ * @author Gahyun Lee 300289068 Modified
  */
 
 @Entity
-@Table(name="users")
+@Table(name="users",  uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "email"
+            }),
+            @UniqueConstraint(columnNames = {
+                "password"
+            })
+})
 public class User {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

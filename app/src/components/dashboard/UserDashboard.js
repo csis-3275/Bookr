@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Header from '../partials/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './styles/dashboard.css';
 import { faUserCog, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class Dashboard extends Component {
+class UserDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -16,7 +15,7 @@ class Dashboard extends Component {
 
     componentWillMount(){
         this.setState({
-            user: this.props.location.state.user
+            user: this.props.user
         })
     }
 
@@ -24,7 +23,6 @@ class Dashboard extends Component {
         const user = this.state.user;
         return ( 
             <div>
-                <Header user={user} />
                 <Container className="center-container">
                     <Row className="justify-content-center">
                         <div className="circle-div">
@@ -79,4 +77,4 @@ class Dashboard extends Component {
     }
 }
  
-export default Dashboard;
+export default UserDashboard;

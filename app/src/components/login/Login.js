@@ -34,7 +34,8 @@ class Login extends Component {
             _password: this.state.password 
         };
         console.log(user);
-        if(this.props.loginUser(user, this.props.history))
+        this.props.loginUser(user, this.props.history);
+        if(localStorage.getItem('user'))
         {
             this.setState({
                 loggedIn: true

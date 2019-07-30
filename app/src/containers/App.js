@@ -5,6 +5,7 @@ import App from "../App";
 
 const mapStateToProps = (state) => {
     let loggedIn = state.auth && state.auth.user ? true : false;
+    console.log(state);
     return {
         loggedIn: loggedIn
     };
