@@ -1,6 +1,7 @@
 package com.Bookr.SystemTest;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.times;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.text.DateFormat;
@@ -169,31 +170,10 @@ public class SystemTest {
 		
 		
 		/* Delete User*/
-		
-		
-//	    ((ResultActions) ((MockHttpServletRequestBuilder) this.mockMvc.perform(MockMvcRequestBuilders
-//	            .delete("/api/delete/{user_id}",'1')
-//	            .contentType(MediaType.APPLICATION_JSON)))
-//	            .accept(MediaType.APPLICATION_JSON))
-//	            .andExpect(status().isOk());
-//	    
-//	    String inputInJson5 = this.mapToJson(user);
-//		String URI5 = "/api/delete/1";
-//		
-//		Mockito.when(userService.saveOrUpdateUser(Mockito.any(User.class))).thenReturn(user);
-//		Mockito.;
-//
-//		RequestBuilder requestBuilder5 = MockMvcRequestBuilders
-//				.post(URI5)
-//				.accept(MediaType.APPLICATION_JSON).content(inputInJson5)
-//				.contentType(MediaType.APPLICATION_JSON);
-//		
-//		MvcResult result5 = mockMvc.perform(requestBuilder5).andReturn();
-//		MockHttpServletResponse response5 = result5.getResponse();
-//		String outputInJson5 = response5.getContentAsString();
-//		
-//		assertEquals(inputInJson5, outputInJson5);
-//		assertEquals(HttpStatus.CREATED.value(), response5.getStatus());
+
+		Mockito.when(userService.getById(1)).thenReturn(user);
+		userService.delete(1);
+		Mockito.verify(userService, times(1)).delete(1);
 
 	}
 	
