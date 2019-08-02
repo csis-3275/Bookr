@@ -13,12 +13,14 @@ import {
 
 export const createNewUser = (new_user, history) => async dispatch => {
     try {
-        await axios.post("http://localhost:8888/api/users/create_user", new_user);
+        await axios.post("http://localhost:8888/api/users/create_user", new_user).then(
+            dispatch({
+                type: USER_CREATED, 
+                payload: {}
+            })
+        );
 
-        dispatch({
-            type: USER_CREATED, 
-            payload: {}
-        });
+        
 
     } catch (err) {
         dispatch({
@@ -38,13 +40,15 @@ export const loginUser = (login_details, history) => async dispatch => {
         const response  = await axios.post("http://localhost:8888/api/users/login", login_details);
         
 
-        if(response.data !== null)
+        if(response.data !== null || response.data !== "")
         {
+            localStorage.setItem('user', JSON.stringify(response.data));
+            
             dispatch({
                 type: LOGIN_SUCCESS, 
                 payload: response.data
             });
-            localStorage.setItem('user', JSON.stringify(response.data));
+            
         }
 
 

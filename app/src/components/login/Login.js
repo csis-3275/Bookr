@@ -35,6 +35,7 @@ class Login extends Component {
         };
         console.log(user);
         this.props.loginUser(user, this.props.history);
+        console.log(localStorage)
         if(localStorage.getItem('user'))
         {
             this.setState({
