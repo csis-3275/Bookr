@@ -140,12 +140,13 @@ public class SystemTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2019, Calendar.JULY, 25, 10, 10, 20);
 		Date date = cal.getTime();
-		reservation.set_start_date(date);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		reservation.set_start_date(dateFormat.format(date));
 		// Setting end date
 		Calendar cal2 = Calendar.getInstance();
 		cal2.set(2019, Calendar.JULY, 26, 10, 10, 20);
 		Date date2 = cal2.getTime();
-		reservation.set_end_date(date2);
+		reservation.set_end_date(dateFormat.format(date2));
 
 		String inputInJson2 = this.mapToJson(reservation);
 		String URI2 = "/api/reservations/create_reservation";

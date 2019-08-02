@@ -62,13 +62,13 @@ public class ReservationControllerTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2019, Calendar.JULY, 25, 10, 10, 20);
 		Date date = cal.getTime();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
-		reservation.set_start_date(date);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+		reservation.set_start_date(dateFormat.format(date));
 		// Setting end date
 		Calendar cal2 = Calendar.getInstance();
 		cal2.set(2019, Calendar.JULY, 26, 10, 10, 20);
 		Date date2 = cal2.getTime();
-		reservation.set_end_date(date2);
+		reservation.set_end_date(dateFormat.format(date2));
 
 		String inputInJson = this.mapToJson(reservation);
 		String URI = "/api/reservations/create_reservation";
@@ -104,13 +104,13 @@ public class ReservationControllerTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2019, Calendar.JULY, 25, 10, 10, 20);
 		Date date = cal.getTime();
-//		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
-		reservation.set_start_date(date);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+		reservation.set_start_date(dateFormat.format(date));
 		// Setting end date
 		Calendar cal2 = Calendar.getInstance();
 		cal2.set(2019, Calendar.JULY, 26, 10, 10, 20);
 		Date date2 = cal2.getTime();
-		reservation.set_end_date(date2);
+		reservation.set_end_date(dateFormat.format(date2));
 		
 		String URI = "/api/reservations/1";
 		
@@ -139,13 +139,13 @@ public class ReservationControllerTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2019, Calendar.JULY, 25, 10, 10, 20);
 		Date date = cal.getTime();
-//		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
-		reservation1.set_start_date(date);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+		reservation1.set_start_date(dateFormat.format(date));
 		// Setting end date
 		Calendar cal2 = Calendar.getInstance();
 		cal2.set(2019, Calendar.JULY, 26, 10, 10, 20);
 		Date date2 = cal2.getTime();
-		reservation1.set_end_date(date2);
+		reservation1.set_end_date(dateFormat.format(date2));
 		
 		Reservation reservation2 = new Reservation();
 		reservation2.set_user_id(2);
@@ -154,11 +154,11 @@ public class ReservationControllerTest {
 		// Setting start date
 		cal.set(2019, Calendar.JULY, 25, 10, 10, 20);
 		Date date3 = cal.getTime();
-		reservation2.set_start_date(date3);
+		reservation2.set_start_date(dateFormat.format(date3));
 		// Setting end date
 		cal2.set(2019, Calendar.JULY, 26, 10, 10, 20);
 		Date date4 = cal2.getTime();
-		reservation2.set_end_date(date4);
+		reservation2.set_end_date(dateFormat.format(date4));
 
 		
 		List<Reservation> reservationList = new ArrayList<>();
