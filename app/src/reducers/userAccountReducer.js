@@ -1,29 +1,24 @@
-import { GET_ACCOUNT_INFO, USER_LOGGED_IN, USER_CREATED, USER_LOGGED_OUT } from "../actions/types";
+import { USER_CREATED, LOGIN_SUCCESS, LOGOUT_SUCCESS } from "../actions/types";
 
 const initialState = {
-    user: []
+    loggedIn: false, 
+    currentUser: {}
 };
 
 export default function(state = initialState, action) {
     switch(action.type) {
-        case GET_ACCOUNT_INFO:
-            return  {
-                ...state, 
-                user: action.payload
-            };
-
-        case USER_LOGGED_IN:
+        case LOGIN_SUCCESS:
             return  {
                 ...state, 
                 loggedIn: true, 
-                user: action.payload
+                currentUser: action.payload
             };
 
-        case USER_LOGGED_OUT:
+        case LOGOUT_SUCCESS:
             return  {
                 ...state, 
                 loggedIn: false, 
-                user: action.payload
+                currentUser: action.payload
             };
 
         case USER_CREATED:

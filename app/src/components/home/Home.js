@@ -18,6 +18,10 @@ class Home extends Component {
          };
     }
 
+    componentWillMount(){
+        
+    }
+
     handleSwap = () => {
         this.setState({
             is_login_form: !this.state.is_login_form
@@ -26,7 +30,7 @@ class Home extends Component {
 
     render() { 
         const swapForms = this.state.is_login_form ? <Login /> : <Register />;
-
+        console.log(localStorage);
         return ( 
             <div className="mt-0">
                 <Container className="mt-0" fluid={true}>

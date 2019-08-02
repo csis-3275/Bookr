@@ -4,6 +4,7 @@ import '../home/styles/styles.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import ReservationModal from './TestReservationModal';
 import "react-datepicker/dist/react-datepicker.css";
+import ReservationList from './ReservationList';
 import Axios from 'axios';
 
 class Reservation extends Component {
@@ -93,7 +94,7 @@ class Reservation extends Component {
                 <Container className="mt-5">
                     <Row noGutters={true} className="justify-content-around">
 
-                        <Col sm="7" className="bg-white py-5 ">
+                        <Col xs="7" className="bg-white py-5 ">
                             <Row>
                                 <Col sm={{ span: 10, offset: 1 }}>
                                     <Row className="justify-content-start">
@@ -137,6 +138,22 @@ class Reservation extends Component {
                                 </Col>
                             </Row>
                         </Col>
+
+                        <Col xs="2">
+                            <Row className="theme-bg-color shadow-below">
+                                <Col sm={{ span: 8, offset: 1 }} className="">
+                                    <Row className="justify-content-start my-2">
+                                        <h4 className="text-white">Reservations</h4>
+                                    </Row>
+                                </Col>
+                            </Row>
+                            <Row className="bg-white">
+                                <Col sm={{ span: 11, offset: 1 }} className="px-0">
+                                    <ReservationList />
+                                </Col>
+                            </Row>
+                        </Col>
+
                     </Row>
                 </Container>
             </div>

@@ -1,19 +1,19 @@
 import axios from "axios";
 import { 
     GET_ERRORS, 
-    GET_ACCOUNT_INFO, 
     USER_CREATED, 
     USER_UPDATED, 
-    USER_LOGGED_IN, 
-    USER_LOGGED_OUT, 
     RESERVATION_CREATED, 
-    RESERVATION_CANCELLED 
+    RESERVATION_CANCELLED, 
+    LOGOUT_SUCCESS, 
+    LOGIN_SUCCESS, 
+    LOGGING_IN, 
+    LOGGING_OUT
 } from "./types";
 
 export const createNewUser = (new_user, history) => async dispatch => {
     try {
         await axios.post("http://localhost:8888/api/users/create_user", new_user);
-        history.push("/");
 
         dispatch({
             type: USER_CREATED, 
@@ -21,20 +21,19 @@ export const createNewUser = (new_user, history) => async dispatch => {
         });
 
     } catch (err) {
-        // dispatch({
-        //     type: GET_ERRORS, 
-        //     payload: err
-        // });        
+        dispatch({
+            type: GET_ERRORS, 
+            payload: err.response.data
+        });        
     }
 }
 
 export const loginUser = (login_details, history) => async dispatch => {
     try {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(login_details)
-        };
+
+        dispatch({
+            type: LOGGING_IN
+        });
 
         const response  = await axios.post("http://localhost:8888/api/users/login", login_details);
         
@@ -42,16 +41,38 @@ export const loginUser = (login_details, history) => async dispatch => {
         if(response.data !== null)
         {
             dispatch({
-                type: USER_LOGGED_IN, 
+                type: LOGIN_SUCCESS, 
                 payload: response.data
-            })
-            .then(localStorage.setItem('user', JSON.stringify(response.data)))
+            });
+            localStorage.setItem('user', JSON.stringify(response.data));
         }
 
 
-    } catch (err) {
-            
+    } catch (err) {   
+        dispatch({
+            type: GET_ERRORS, 
+            payload: err.response
+        })
+    }
+}
 
-        
+export const logoutUser = () => async dispatch => {
+    try {
+        dispatch({
+            type: LOGGING_OUT
+        });
+
+        await localStorage.removeItem('user');
+
+        await dispatch({
+            type: LOGOUT_SUCCESS
+        });
+
+    } 
+    catch (err) {
+        dispatch({
+            type: GET_ERRORS, 
+            payload: err.response
+        })
     }
 }

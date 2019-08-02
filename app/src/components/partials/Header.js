@@ -2,21 +2,43 @@ import React, { Component } from 'react';
 import { Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import "./styles/header.css";
 import Logo from '../img/spiral_dixed.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
+import { logoutUser } from '../../actions/appActions';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 
 class Header extends Component {
     constructor(props) {
         super(props);
+        this.redirect = this.redirect.bind(this);
         this.state = {
             user: {}
         }
     }
 
     componentWillMount() {
+        console.log("local storage --> "+localStorage.getItem('user'));
+        console.log("props ---> "+JSON.stringify(this.props.user));
         this.setState({
             user: this.props.user
         })
+    }
+
+    redirect = () => {
+        this.props.logoutUser();
+        if(!localStorage.getItem('user'))
+        {
+            this.setState({
+                loggedIn: false
+            });
+        }
+        if(this.state.loggedIn === true)
+        {
+            return <Redirect to={{
+                pathname: '/'
+            }}/>
+        }
     }
 
     render() {
@@ -40,7 +62,7 @@ class Header extends Component {
                             className="text-white pr-4"
                         >
                             Welcome <span className="text-name">
-                                {this.state.user._firstname} {this.state.user._lastname}
+                                {this.props.user._firstname} {this.props.user._lastname}
                             </span>
                         </Nav.Link>
                         <NavDropdown title="Options" id="collasible-nav-dropdown" className="pr-5">
@@ -62,7 +84,7 @@ class Header extends Component {
                             </NavDropdown.Item>
                             <NavDropdown.Item href="/contact_support">Contact Support</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item as={Button} onClick="">Logout</NavDropdown.Item>
+                            <NavDropdown.Item as={Button} onClick={this.redirect}>Logout</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
@@ -71,4 +93,15 @@ class Header extends Component {
     }
 }
 
-export default Header;
+// export default Header;
+
+Header.propTypes = {
+    logoutUser: propTypes.func.isRequired, 
+    errors: propTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, {logoutUser})(Header);
