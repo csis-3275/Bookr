@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import Home from './components/home/Home';
 
 export const PrivateRoute = ( {component: Component, isLoggedIn, ...rest}) => (
-    <Route {...rest} render={props => (
+    <Route exact {...rest} render={props => (
         isLoggedIn === true
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/'}} />
+        : <Home />
     )} />
 )

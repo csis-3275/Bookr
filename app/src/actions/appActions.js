@@ -23,7 +23,7 @@ export const createNewUser = (new_user, history) => async dispatch => {
     } catch (err) {
         dispatch({
             type: GET_ERRORS, 
-            payload: err
+            payload: err.response.data
         });        
     }
 }
@@ -51,7 +51,7 @@ export const loginUser = (login_details, history) => async dispatch => {
     } catch (err) {   
         dispatch({
             type: GET_ERRORS, 
-            payload: err
+            payload: err.response
         })
     }
 }
@@ -62,9 +62,9 @@ export const logoutUser = () => async dispatch => {
             type: LOGGING_OUT
         });
 
-        localStorage.removeItem('user');
+        await localStorage.removeItem('user');
 
-        dispatch({
+        await dispatch({
             type: LOGOUT_SUCCESS
         });
 
@@ -72,7 +72,7 @@ export const logoutUser = () => async dispatch => {
     catch (err) {
         dispatch({
             type: GET_ERRORS, 
-            payload: err
+            payload: err.response
         })
     }
 }

@@ -21,13 +21,13 @@ class DashboardController extends Component {
     }
 
     render() { 
-        const user = this.state.user;
-
-        const Dashboard = user._role_id === 1 || user._role_id === 2 ? <SupportDashboard user={user} /> : <UserDashboard user={this.state.user} />;
+        const user = this.props.location.state.user;
+        console.log(localStorage);
+        const Dashboard = user._role_id === 1 || user._role_id === 2 ? <SupportDashboard user={this.props.location.state.user} /> : <UserDashboard user={this.props.location.state.user} />;
 
         return ( 
             <div>
-                <Header user={user} />
+                <Header user={this.props.location.state.user} />
                 { Dashboard }
             </div>
          );

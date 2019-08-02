@@ -34,7 +34,7 @@ class Reservation extends Component {
                 <Container className="cm-top">
                     <Row noGutters={true} className="justify-content-around">
 
-                        <Col sm="7" className="bg-white py-5 ">
+                        <Col xs="7" className="bg-white py-5 ">
                             <Row>
                                 <Col sm={{ span: 10, offset: 1 }}>
                                     <Row className="justify-content-start">
@@ -61,7 +61,7 @@ class Reservation extends Component {
 
                         </Col>
 
-                        <Col sm="2">
+                        <Col xs="2">
                             <Row className="theme-bg-color shadow-below">
                                 <Col sm={{ span: 8, offset: 1 }} className="">
                                     <Row className="justify-content-start my-2">
