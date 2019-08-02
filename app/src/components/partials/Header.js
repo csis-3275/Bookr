@@ -32,13 +32,14 @@ class Header extends Component {
             this.setState({
                 loggedIn: false
             });
+            if(this.state.loggedIn === false)
+            {
+                return <Redirect to={{
+                    pathname: '/'
+                }}/>
+            }
         }
-        if(this.state.loggedIn === false)
-        {
-            return <Redirect to={{
-                pathname: '/'
-            }}/>
-        }
+        
     }
 
     render() {
@@ -65,7 +66,7 @@ class Header extends Component {
                                 {this.state.user._firstname} {this.state.user._lastname}
                             </span>
                         </Nav.Link>
-                        <NavDropdown title="Options" id="collasible-nav-dropdown" className="pr-5">
+                        <NavDropdown title="Options" id="collasible-nav-dropdown" className="pr-5 mr-5">
                             <NavDropdown.Item as={NavLink} to={{
                                 pathname: "/reservation", 
                                 state: {

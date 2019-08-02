@@ -52,7 +52,11 @@ public class ReservationController {
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 	}
 	
-
-
+	@GetMapping("/get/{user_id}")
+	public Iterable<Reservation> getAllReservations(@PathVariable Integer user_id)
+	{
+		
+		return reservationService.findByUser(user_id);
+	}
 
 }
