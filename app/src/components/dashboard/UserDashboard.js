@@ -21,7 +21,7 @@ class UserDashboard extends Component {
 
     render() {
         const user = this.state.user;
-        console.log(this.state.user);
+        console.log(this.props.user);
         return (
             <div>
                 <Container className="center-container">

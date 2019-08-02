@@ -16,7 +16,7 @@ class App extends Component {
   render(){
     return (
       <Switch>
-        <Route  path="/" component={()=><Home />} exact /> {/**make inaccessible to logged in users */}
+        <Route  path="/" component={Home} exact /> {/**make inaccessible to logged in users */}
         <PrivateRoute isLoggedIn={this.props.loggedIn} path="/dashboard" component={DashboardController} exact />    
         <PrivateRoute isLoggedIn={this.props.loggedIn}  path="/support" component={Support}  exact />
         <PrivateRoute isLoggedIn={this.props.loggedIn}  path="/reservation" component={Reservation} exact />

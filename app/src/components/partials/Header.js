@@ -21,7 +21,7 @@ class Header extends Component {
         console.log("local storage --> "+localStorage.getItem('user'));
         console.log("props ---> "+JSON.stringify(this.props.user));
         this.setState({
-            user: this.props.user
+            user: JSON.parse(localStorage.getItem('user'))
         })
     }
 
@@ -33,7 +33,7 @@ class Header extends Component {
                 loggedIn: false
             });
         }
-        if(this.state.loggedIn === true)
+        if(this.state.loggedIn === false)
         {
             return <Redirect to={{
                 pathname: '/'
@@ -62,7 +62,7 @@ class Header extends Component {
                             className="text-white pr-4"
                         >
                             Welcome <span className="text-name">
-                                {this.props.user._firstname} {this.props.user._lastname}
+                                {this.state.user._firstname} {this.state.user._lastname}
                             </span>
                         </Nav.Link>
                         <NavDropdown title="Options" id="collasible-nav-dropdown" className="pr-5">
