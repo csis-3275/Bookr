@@ -3,63 +3,116 @@ import Header from '../partials/Header';
 import '../home/styles/styles.css';
 import './styles/styles.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import Messages from './Messages';
-import ReserveUpdateForm from './update/ReserveUpdateForm';
+import { Form, InputGroup, Button } from 'react-bootstrap';
+import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import moment from 'moment';
+import Axios from 'axios';
 
 class Support extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      user: {}, 
+      title: "", 
+      message: "", 
+      date_sent: ""
+    }
+  }
+
+  componentWillMount(){
+    this.setState({
+      user: this.props.location.state.user
+    })
+  }
+
+  handleChange(e){
+    this.setState({
+        [e.target.name]: e.target.value
+    });
+  }
+
+  handleSubmit(e){
+      e.preventDefault();
+      const new_request = {
+        _user_id: this.state.user.id, 
+        _title: this.state.title, 
+        _message: this.state.message, 
+        _date_sent: moment(new Date()).format("YYYY-MM-DD")
+      };
+
+      console.log(new_request);
+      Axios.post("http://localhost:8888/api/requests/create_request", new_request);
+  }
+
   render() {
+    const user = this.state.user;
     return (
-      <div className="main-bg" fluid={true} >
+      <div>
         <Header />
-        {/* <Container className="cm-top" fluid={true}>
-          <Row noGutters={true} className="justify-content-around">
+        <Container className="" fluid>
+          <Row noGutters={true} className="justify-content-around mt-5">
 
-            <Col sm="7" className="bg-white py-5 ">
-              <Row>
-                <Col sm={{ span: 10, offset: 1 }}>
-                  <Row className="justify-content-start">
-                    <h3 className="text-dark">DashBoard</h3>
-                  </Row>
-                </Col>
-              </Row>
-
-              <Row className="elm-top">
-                <Col sm={{span: 10, offset: 1}}>
-                    <Row className="justify-content-center">
-                      <p className="text-secondary">This is your dashboard area. You can view your most recent reservations here. Please do not hesitate to contact support if you have any issues with our service. Unfortunatel, this web app is still in development so features are limited. Thank you and have a nice day.</p>
-                    </Row>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col sm={{span: 10, offset: 1}}>
-                    <Row className="justify-content-end elm-top">
-                      <p className="text-secondary">- The Team</p>
-                    </Row>
-                </Col>
-              </Row>
-
-            </Col>
-
-            <Col sm="2" className="bg-white">
-              <Row className="theme-bg-color shadow">
-                <Col sm={{ span: 8, offset: 1 }} className="">
-                  <Row className="justify-content-start my-2">
-                    <h4 className="text-white">Messages</h4>
-                  </Row>
-                </Col>
-              </Row>
-              <Row>
-                <Col sm={{ span: 12, offset: 1 }} className="px-0">
-                  <Messages/>
-                </Col>
-              </Row>
+            <Col sm="6" className="bg-glass-blur rounded">
+              <Form noValidate className="text-dark py-5 px-5" onSubmit={this.handleSubmit}>
+                <Form.Row>
+                    <Form.Group as={Col} md="10">
+                        <Form.Row>
+                            <h2 className="text-white">We are here to help!</h2>
+                        </Form.Row>
+                        <Form.Row>
+                            <h5 className="text-light font-weight-light">Fill the form below an we will get back to you asap!</h5>
+                        </Form.Row>
+                    </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col} md="10" controlId="validationCustomUsername">
+                    <Form.Label className="text-white">Message Title</Form.Label>
+                      <InputGroup>
+                          <Form.Control
+                          type="text"
+                          placeholder="Message Title..."
+                          aria-describedby="inputGroupPrepend"
+                          value={this.state.title}
+                          onChange={this.handleChange}
+                          name="title"
+                          required
+                          />
+                          <Form.Control.Feedback type="invalid">
+                              Please enter the title of your message.
+                          </Form.Control.Feedback>
+                      </InputGroup>
+                    </Form.Group>
+                  </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col} md="10" controlId="validationCustomUsername">
+                    <Form.Label className="text-white">Messsage Body</Form.Label>
+                    <InputGroup>
+                        <Form.Control
+                        as="textarea"
+                        placeholder="What's the issue?"
+                        aria-describedby="inputGroupPrepend"
+                        value={this.state.message}
+                        onChange={this.handleChange}
+                        name="message"
+                        rows="5"
+                        required
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Please state your request and make sure to include relevant details like reservation numbers
+                        </Form.Control.Feedback>
+                    </InputGroup>
+                  </Form.Group>
+                </Form.Row>
+                <Button type="submit" className="py-2 px-5">Submit</Button>
+            </Form>
             </Col>
 
           </Row>
-        </Container> */}
-
-        <ReserveUpdateForm />
+        </Container>
 
       </div>
     );

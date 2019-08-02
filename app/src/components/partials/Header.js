@@ -83,7 +83,12 @@ class Header extends Component {
                             }}>
                                 Manage Account
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="/contact_support">Contact Support</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to={{
+                                pathname: "/support", 
+                                state: {
+                                    user: this.state.user
+                                }
+                            }}>Contact Support</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Button} onClick={this.redirect}>Logout</NavDropdown.Item>
                         </NavDropdown>

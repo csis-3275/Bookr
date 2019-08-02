@@ -11,6 +11,7 @@ import Support from "./components/support/Support";
 import {PrivateRoute} from './PrivateRoute';
 import DashboardController from './components/dashboard/DashboardController';
 import ErrorPage from './components/error/Error';
+import Messages from './components/support/Messages';
 
 class App extends Component {
   render(){
@@ -24,6 +25,7 @@ class App extends Component {
         <PrivateRoute isLoggedIn={this.props.loggedIn}  path="/userprofile" component={UserProfile} exact />
         <PrivateRoute isLoggedIn={this.props.loggedIn}  path="/schedule" component={Schedule} exact />
         <PrivateRoute isLoggedIn={this.props.loggedIn}  path="/reschedule" component={Reschedule} exact />
+        <PrivateRoute isLoggedIn={this.props.loggedIn}  path="/requests" component={Messages} exact />
 
         <Route component={ErrorPage} />
       </Switch>

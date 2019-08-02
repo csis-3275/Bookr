@@ -45,6 +45,10 @@ public class BookrMainApplication {
 	            registry.addMapping("/api/rooms").allowedOrigins("http://localhost:8000");
 	            registry.addMapping("/api/rooms/all").allowedOrigins("http://localhost:8000");
 	            registry.addMapping("/api/rooms/{room_id}").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/requests").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/requests/create_request").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/requests/all").allowedOrigins("http://localhost:8000");
+	            registry.addMapping("/api/requests/{request_id}").allowedOrigins("http://localhost:8000");
 	         }
 	      };
 	   }
