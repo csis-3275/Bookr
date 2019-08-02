@@ -33,9 +33,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 @Entity
 @Table(name="reservations")
 public class Reservation {
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
-	
+		
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -45,7 +43,6 @@ public class Reservation {
 	private Integer _room_id;
 	
 	@Column(name="user_id")
-	@JsonIgnore
 	private Integer _user_id;
 	
 	@NotNull
@@ -92,7 +89,6 @@ public class Reservation {
 	/**
 	 * @return the _start_date
 	 */
-	@JsonDeserialize(using = DateAndTimeDeserialize.class)
 	public String get_start_date() {
 		return _start_date;
 	}
@@ -100,14 +96,13 @@ public class Reservation {
 	/**
 	 * @param _start_date the _start_date to set
 	 */
-	public void set_start_date(Date _start_date) {
-		this._start_date = sdf.format(_start_date);
+	public void set_start_date(String _start_date) {
+		this._start_date = _start_date;
 	}
 
 	/**
 	 * @return the _end_date
 	 */
-	@JsonDeserialize(using = DateAndTimeDeserialize.class)
 	public String get_end_date() {
 		return _end_date;
 	}
@@ -115,8 +110,8 @@ public class Reservation {
 	/**
 	 * @param _end_date the _end_date to set
 	 */
-	public void set_end_date(Date _end_date) {
-		this._end_date = sdf.format(_end_date);
+	public void set_end_date(String _end_date) {
+		this._end_date = _end_date;
 	}
 
 	/**

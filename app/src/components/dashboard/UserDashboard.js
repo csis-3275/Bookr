@@ -8,25 +8,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class UserDashboard extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             user: {}
-         }
+        }
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.setState({
             user: this.props.user
         })
     }
 
-    render() { 
+    render() {
         const user = this.state.user;
-        return ( 
+        console.log(this.state.user);
+        return (
             <div>
                 <Container className="center-container">
                     <Row className="justify-content-center">
                         <div className="circle-div">
-                            <span>{user._firstname.substr(0,1)}</span>
+                            <span>{user._firstname.substr(0, 1)}</span>
                         </div>
                     </Row>
                     <Row className="justify-content-center mt-4">
@@ -37,12 +38,12 @@ class UserDashboard extends Component {
                     </Row>
                     <Row className="mt-5">
                         <Col md="6" className="p-5 ">
-                            <Row className="p-5 border border-dark shadow bg-white"> 
+                            <Row className="p-5 border border-dark shadow bg-white">
                                 <Col sm="10">
                                     <h4 className="font-weight-normal">Manage Account & Privacy</h4>
                                     <h5 className="font-weight-light mb-5">You can manage your account setting and update your profile from here</h5>
                                     <NavLink className="mt-5" to={{
-                                        pathname: "/userprofile", 
+                                        pathname: "/userprofile",
                                         state: {
                                             user: this.state.user
                                         }
@@ -54,12 +55,12 @@ class UserDashboard extends Component {
                             </Row>
                         </Col>
                         <Col md="6" className="p-5 ">
-                            <Row className="p-5 border border-dark shadow bg-white"> 
+                            <Row className="p-5 border border-dark shadow bg-white">
                                 <Col sm="10">
                                     <h4 className="font-weight-normal">Reservations</h4>
                                     <h5 className="font-weight-light mb-5">You can schedule, re-schedule, cancel and track your reservations here</h5>
                                     <NavLink className="mt-5" to={{
-                                        pathname: "/reservation", 
+                                        pathname: "/reservation",
                                         state: {
                                             user: this.state.user
                                         }
@@ -73,7 +74,7 @@ class UserDashboard extends Component {
                     </Row>
                 </Container>
             </div>
-         );
+        );
     }
 }
  
