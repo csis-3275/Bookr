@@ -34,4 +34,9 @@ public class ReservationService {
 		Reservation reservation = getById(id);
 		reservationRepository.delete(reservation);
 	}
+	
+	public Iterable<Reservation> findByUser(Integer user_id)
+	{
+		return reservationRepository.findByUserId(user_id);
+	}
 }

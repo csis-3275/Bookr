@@ -57,6 +57,24 @@ public class Reservation {
 	@Column(name="reservation_number")
 	private String _res_number;
 	
+	
+	@NotEmpty
+	@Column(name="event_title")
+	private String _event_title;
+
+	/**
+	 * @return the _event_title
+	 */
+	public String get_event_title() {
+		return _event_title;
+	}
+
+	/**
+	 * @param _event_title the _event_title to set
+	 */
+	public void set_event_title(String _event_title) {
+		this._event_title = _event_title;
+	}
 
 	/**
 	 * @return the _user_id

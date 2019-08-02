@@ -32,13 +32,14 @@ class Header extends Component {
             this.setState({
                 loggedIn: false
             });
+            if(this.state.loggedIn === false)
+            {
+                return <Redirect to={{
+                    pathname: '/'
+                }}/>
+            }
         }
-        if(this.state.loggedIn === false)
-        {
-            return <Redirect to={{
-                pathname: '/'
-            }}/>
-        }
+        
     }
 
     render() {
@@ -65,7 +66,7 @@ class Header extends Component {
                                 {this.state.user._firstname} {this.state.user._lastname}
                             </span>
                         </Nav.Link>
-                        <NavDropdown title="Options" id="collasible-nav-dropdown" className="pr-5">
+                        <NavDropdown title="Options" id="collasible-nav-dropdown" className="pr-5 mr-5">
                             <NavDropdown.Item as={NavLink} to={{
                                 pathname: "/reservation", 
                                 state: {
@@ -82,7 +83,12 @@ class Header extends Component {
                             }}>
                                 Manage Account
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="/contact_support">Contact Support</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to={{
+                                pathname: "/support", 
+                                state: {
+                                    user: this.state.user
+                                }
+                            }}>Contact Support</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Button} onClick={this.redirect}>Logout</NavDropdown.Item>
                         </NavDropdown>

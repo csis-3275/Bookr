@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './styles/dashboard.css';
-import { faUserCog, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserCog, faCalendarAlt, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class UserDashboard extends Component {
@@ -68,6 +68,26 @@ class UserDashboard extends Component {
                                 </Col>
                                 <Col sm="2">
                                     <FontAwesomeIcon className="display-4" icon={faCalendarAlt} />
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+
+                    <Row className="mt-5">
+                        <Col md="6" className="p-5 ">
+                            <Row className="p-5 border border-dark shadow bg-white">
+                                <Col sm="10">
+                                    <h4 className="font-weight-normal">Contact Help Desk</h4>
+                                    <h5 className="font-weight-light mb-5">You can reach our support agents for help throught this portal</h5>
+                                    <NavLink className="mt-5" to={{
+                                        pathname: "/support",
+                                        state: {
+                                            user: this.state.user
+                                        }
+                                    }}>Contact help desk</NavLink>
+                                </Col>
+                                <Col sm="2">
+                                    <FontAwesomeIcon className="display-4" icon={faQuestionCircle} />
                                 </Col>
                             </Row>
                         </Col>

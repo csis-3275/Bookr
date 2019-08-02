@@ -49,6 +49,11 @@ public class User {
 	@JoinColumn(name="user_id", referencedColumnName="id")
 	private List<Reservation> _reservations = new ArrayList<Reservation>();
 	
+	@OneToMany(targetEntity=Request.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	@JoinColumn(name="user_id", referencedColumnName="id")
+	private List<Request> _requests = new ArrayList<Request>();
+	
 	@Column(name="role_id")
 	@NotNull
 	private Integer _role_id;

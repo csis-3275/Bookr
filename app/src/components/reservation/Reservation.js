@@ -72,7 +72,6 @@ class Reservation extends Component {
 
         Axios.get("http://localhost:8888/api/rooms/all")
             .then((response) => {
-                console.log(response.data)
                 this.setState({
                     rooms: response.data
                 })
@@ -89,67 +88,27 @@ class Reservation extends Component {
 
 
         return (
-            <div className="main-bg">
+            <div>
                 <Header user={user} />
                 <Container className="mt-5">
                     <Row noGutters={true} className="justify-content-around">
 
-                        <Col xs="7" className="bg-white py-5 ">
-                            <Row>
-                                <Col sm={{ span: 10, offset: 1 }}>
-                                    <Row className="justify-content-start">
-                                        <h3 className="text-dark">Your Reservations</h3>
-                                    </Row>
-                                    <Row>
-                                        <ReservationModal user={this.state.user} rooms={this.state.rooms} />
-                                    </Row>
-                                </Col>
-                                <Col>
-                                    <ul className="list-style-none">
-                                        <li className="px-0 py-0 ">
-                                            <h5 className="text-dark mt-2">Quarterly Tech Expo</h5>
-                                            <p className="text-dark mb-0">2019-09-2019</p>
-                                            <p className="text-dark mb-0">Convention Hall A</p>
-                                            <p className="text-muted mb-2">Reservation Number Bookr2435</p>
-                                            <hr></hr>
-                                        </li>
-                                        <li className="px-0 py-0 ">
-                                            <h5 className="text-dark mt-2">Annual Aviation Enthusiasts Meet</h5>
-                                            <p className="text-dark mb-0">2019-07-22</p>
-                                            <p className="text-dark mb-0">Convention Hall B</p>
-                                            <p className="text-muted mb-2">Reservation Number Bookr2437</p>
-                                            <hr></hr>
-                                        </li>
-                                        <li className="px-0 py-0 ">
-                                            <h5 className="text-dark mt-2">Capsule Corporation Quarterly Meeting</h5>
-                                            <p className="text-dark mb-0">2019-07-22</p>
-                                            <p className="text-dark mb-0">Boardroom D</p>
-                                            <p className="text-muted mb-2">Reservation Number Bookr2550</p>
-                                            <hr></hr>
-                                        </li>
-                                        <li className="px-0 py-0 ">
-                                            <h5 className="text-dark mt-2">Capsule/ CyberDyne Merger Meeting</h5>
-                                            <p className="text-dark mb-0">2019-07-22</p>
-                                            <p className="text-dark mb-0">Boardroom C</p>
-                                            <p className="text-muted mb-2">Reservation Number Bookr2551</p>
-                                            <hr></hr>
-                                        </li>
-                                    </ul>
-                                </Col>
-                            </Row>
-                        </Col>
-
-                        <Col xs="2">
-                            <Row className="theme-bg-color shadow-below">
+                        <Col xs="7">
+                            <Row className="bg-white shadow-below">
                                 <Col sm={{ span: 8, offset: 1 }} className="">
                                     <Row className="justify-content-start my-2">
-                                        <h4 className="text-white">Reservations</h4>
+                                        <Col md="8">
+                                            <h2 className="text-dark">Reservations</h2>
+                                        </Col>
+                                        <Col md="4">
+                                            <ReservationModal user={this.state.user} rooms={this.state.rooms} />
+                                        </Col>
                                     </Row>
                                 </Col>
                             </Row>
                             <Row className="bg-white">
-                                <Col sm={{ span: 11, offset: 1 }} className="px-0">
-                                    <ReservationList />
+                                <Col sm={{ span: 12 }} className="px-3">
+                                    <ReservationList userId={user.id} />
                                 </Col>
                             </Row>
                         </Col>

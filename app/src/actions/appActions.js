@@ -8,7 +8,8 @@ import {
     LOGOUT_SUCCESS, 
     LOGIN_SUCCESS, 
     LOGGING_IN, 
-    LOGGING_OUT
+    LOGGING_OUT,
+    LOGIN_FAILURE
 } from "./types";
 
 export const createNewUser = (new_user, history) => async dispatch => {
@@ -40,15 +41,14 @@ export const loginUser = (login_details, history) => async dispatch => {
         const response  = await axios.post("http://localhost:8888/api/users/login", login_details);
         
 
-        if(response.data !== null || response.data !== "")
+        if(response.data !== null || response.data !== "" || response.data !== undefined)
         {
-            localStorage.setItem('user', JSON.stringify(response.data));
+            await localStorage.setItem('user', JSON.stringify(response.data));
             
             dispatch({
                 type: LOGIN_SUCCESS, 
                 payload: response.data
-            });
-            
+            });      
         }
 
 
@@ -58,6 +58,7 @@ export const loginUser = (login_details, history) => async dispatch => {
             payload: err.response
         })
     }
+    
 }
 
 export const logoutUser = () => async dispatch => {
@@ -67,10 +68,12 @@ export const logoutUser = () => async dispatch => {
         });
 
         await localStorage.removeItem('user');
-
-        await dispatch({
-            type: LOGOUT_SUCCESS
+        dispatch({
+            type: LOGOUT_SUCCESS, 
+            payload: {}
         });
+
+        
 
     } 
     catch (err) {

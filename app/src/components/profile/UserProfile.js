@@ -4,6 +4,7 @@ import Header from '../partials/Header';
 import '../home/styles/styles.css';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Axios from 'axios';
 
 class UserProfile extends Component {
 
@@ -42,6 +43,15 @@ class UserProfile extends Component {
     onSubmit = e => {
         e.preventDefault();
         console.log(this.state);
+        const user_to_update = {
+            id: this.state.id,
+            _firstname: this.state.firstName,
+            _lastname: this.state.lastName,
+            _email: this.state.email,
+            _password: this.state.password,
+            _role_id: this.state.role_id
+        }
+        Axios.post("http://localhost:8888/api/users/create_user", user_to_update);
     }
 
     render() {
