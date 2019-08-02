@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
+import { Form, Row, InputGroup, Button, Col } from 'react-bootstrap';
 import Header from '../partials/Header';
 import '../home/styles/styles.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class UserProfile extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            user: {}, 
-            id: 0, 
+            user: {},
+            id: 0,
             firstName: "",
             lastName: "",
             email: "",
@@ -19,14 +21,14 @@ class UserProfile extends Component {
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.setState({
-            user: this.props.location.state.user, 
-            id: this.props.location.state.user.id, 
-            firstName: this.props.location.state.user._firstname, 
-            lastName: this.props.location.state.user._lastname, 
-            email: this.props.location.state.user._email, 
-            password: this.props.location.state.user._password, 
+            user: this.props.location.state.user,
+            id: this.props.location.state.user.id,
+            firstName: this.props.location.state.user._firstname,
+            lastName: this.props.location.state.user._lastname,
+            email: this.props.location.state.user._email,
+            password: this.props.location.state.user._password,
             role_id: this.props.location.state.user._role_id
         })
     }
@@ -44,54 +46,110 @@ class UserProfile extends Component {
 
     render() {
         return (
-            <div className="main-bg">
+            <div>
                 <Header user={this.state.user} />
-                <Container className="cm-top">
-                    <Row className="elm-top">
-                        <Col sm={{ span: 10, offset: 1 }}>
-                            <Row className="justify-content-center">
-                                <form className="bg-light py-5 px-5 rounded">
-                                    <h1 className="text-dark">Profile</h1>
-                                    <input
-                                        name="firstName"
-                                        placeholder="First Name"
-                                        value={this.state.firstName}
-                                        onChange={e => this.change(e)}
-                                    />
-                                    <br />
-                                    <br />
-                                    <input
-                                        name="lastName"
-                                        placeholder="Last Name"
-                                        value={this.state.lastName}
-                                        onChange={e => this.change(e)}
-                                    />
-                                    <br />
-                                    <br />
-                                    <input
-                                        name="email"
-                                        placeholder="Email"
-                                        value={this.state.email}
-                                        onChange={e => this.change(e)}
-                                    />
-                                    <br />
-                                    <br />
-                                    <input
-                                        name="password"
-                                        type="password"
-                                        placeholder="Password"
-                                        value={this.state.password}
-                                        onChange={e => this.change(e)}
-                                    />
-                                    <br />
-                                    <br />
-                                    <button onClick={e => this.onSubmit(e)}>Update</button>
-                                </form>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+                <Row className="mt-5">
+                    <Col md={{ span: 4, offset: 4 }}>
+                        <Form className="bg-glass-blur py-5 px-5 rounded text-white mt-5">
+
+                            <Form.Row>
+                                <Form.Group as={Col} sm="12">
+                                    <Form.Row>
+                                        <h2 className="text-white">Update Profile</h2>
+                                    </Form.Row>
+
+                                </Form.Group>
+                            </Form.Row>
+                            <Form.Row>
+                                <Form.Group as={Col} md="12">
+                                    <Form.Label>First Name:</Form.Label>
+
+                                    <InputGroup>
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text id="inputGroupPrepend"><FontAwesomeIcon icon={faUser} /></InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <Form.Control
+                                            type="text"
+                                            aria-describedby="inputGroupPrepend"
+                                            value={this.state.firstName}
+                                            onChange={this.change}
+                                            name="firstName"
+                                            required
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please enter your firstname.
+                                        </Form.Control.Feedback>
+                                    </InputGroup>
+                                </Form.Group>
+                            </Form.Row>
+                            <Form.Row>
+                                <Form.Group as={Col} md="12">
+                                    <Form.Label>Last Name:</Form.Label>
+                                    <InputGroup>
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text id="inputGroupPrepend"><FontAwesomeIcon icon={faUser} /></InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <Form.Control
+                                            type="text"
+                                            aria-describedby="inputGroupPrepend"
+                                            value={this.state.lastName}
+                                            onChange={this.change}
+                                            name="lastName"
+                                            required
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please enter your lastname.
+                                        </Form.Control.Feedback>
+                                    </InputGroup>
+                                </Form.Group>
+                            </Form.Row>
+                            <Form.Row>
+                                <Form.Group as={Col} md="12">
+                                    <Form.Label>Email: </Form.Label>
+                                    <InputGroup>
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text id="inputGroupPrepend"><FontAwesomeIcon icon={faUser} /></InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <Form.Control
+                                            type="email"
+                                            aria-describedby="inputGroupPrepend"
+                                            value={this.state.email}
+                                            onChange={this.change}
+                                            name="email"
+                                            required
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please enter your email.
+                                        </Form.Control.Feedback>
+                                    </InputGroup>
+                                </Form.Group>
+                            </Form.Row>
+                            <Form.Row>
+                                <Form.Group as={Col} md="12">
+                                    <Form.Label>Password: </Form.Label>
+                                    <InputGroup>
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text id="inputGroupPrepend"><FontAwesomeIcon icon={faUser} /></InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <Form.Control
+                                            type="password"
+                                            aria-describedby="inputGroupPrepend"
+                                            value={this.state.password}
+                                            onChange={this.change}
+                                            name="password"
+                                            required
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please enter your password.
+                                        </Form.Control.Feedback>
+                                    </InputGroup>
+                                </Form.Group>
+                            </Form.Row>
+                            <Button type="submit" className="py-2 px-5 btn-primary" onClick={e => this.onSubmit(e)}>Update</Button>
+                        </Form>
+                    </Col>
+                </Row>
+            </div >
         );
     }
 }
